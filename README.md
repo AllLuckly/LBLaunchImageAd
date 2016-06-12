@@ -18,11 +18,6 @@ LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.w
         switch (tag) {
             case 1100:{
                 NSLog(@"点击广告回调");
-                TestViewController *vc = [[TestViewController alloc]init];
-                vc.view.backgroundColor = [UIColor whiteColor];
-                [self.window.rootViewController presentViewController:vc animated:YES completion:^{
-                    
-                }];
             }
                 break;
             case 1101:
