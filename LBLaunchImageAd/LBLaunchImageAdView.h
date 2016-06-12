@@ -21,7 +21,6 @@ typedef enum {
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
 
 typedef void (^LBClick) (NSInteger tag);
-//typedef void (^finishClose)(void);
 @interface LBLaunchImageAdView : UIView
 
 @property (strong, nonatomic) UIImageView *aDImgView;
@@ -29,7 +28,6 @@ typedef void (^LBClick) (NSInteger tag);
 @property (assign, nonatomic) NSInteger adTime; //倒计时总时长,默认6秒
 @property (strong, nonatomic) UIButton *skipBtn;
 @property (nonatomic, copy)LBClick clickBlock;
-//@property (nonatomic, copy)finishClose finishCloseBlock;
 
 - (instancetype)initWithWindow:(UIWindow *)window andType:(NSInteger)type andImgUrl:(NSString *)url;
 
