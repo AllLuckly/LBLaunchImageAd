@@ -4,6 +4,14 @@
 
 ###[iOS开发学习app下载](https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8)
 
+
+效果图如下：
+
+![(LBLaunchImageAd)](https://github.com/AllLuckly/LBLaunchImageAd/blob/master/Untitled.gif?raw=true)
+
+
+
+
 本框架依赖`SDWebImage`
 
 导入`LBLaunchImageAd`
@@ -36,4 +44,4 @@ LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.w
 
 ```
 
-![(LBLaunchImageAd)](https://github.com/AllLuckly/LBLaunchImageAd/blob/master/Untitled.gif?raw=true)
+
