@@ -36,4 +36,4 @@ LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.w
 
 ```
 
-效果图如下：[!(11)](https://github.com/AllLuckly/LBLaunchImageAd/blob/master/Untitled.gif?raw=true)
+![(LBLaunchImageAd)](https://github.com/AllLuckly/LBContacts/blob/master/Untitled.gif?raw=true)
