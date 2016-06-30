@@ -158,7 +158,7 @@
     }
     if (_secondsCountDown < _adTime) {
         _secondsCountDown++;
-        [self.skipBtn setTitle:[NSString stringWithFormat:@"%ld | 跳过",_secondsCountDown] forState:UIControlStateNormal];
+        [self.skipBtn setTitle:[NSString stringWithFormat:@"%@ | 跳过",@(_secondsCountDown)] forState:UIControlStateNormal];
     }else{
         
         [countDownTimer invalidate];
