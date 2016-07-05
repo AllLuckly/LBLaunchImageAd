@@ -133,7 +133,7 @@
     countDownTimer = nil;
     self.hidden = YES;
     self.aDImgView.hidden = YES;
-    self.hidden = YES;
+    [self removeFromSuperview];
     if ([_isClick integerValue] == 1) {
         
         if (self.clickBlock) {//点击广告
@@ -149,8 +149,7 @@
         }
     }
     
-    
-    
+   
 }
 
 - (void)onTimer {
