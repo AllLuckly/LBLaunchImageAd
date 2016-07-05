@@ -13,7 +13,6 @@
     NSTimer *countDownTimer;
 }
 @property (strong, nonatomic) NSString *isClick;
-@property (assign, nonatomic) NSInteger secondsCountDown; //倒计时总时长
 @end
 
 @implementation LBLaunchImageAdView
@@ -23,7 +22,7 @@
     self = [super init];
     if (self) {
         self.window = window;
-        _secondsCountDown = 0;
+        _adTime = 6;
         [window makeKeyAndVisible];
         //获取启动图片
         CGSize viewSize = window.bounds.size;
@@ -65,14 +64,17 @@
         maskLayer.frame = self.skipBtn.bounds;
         maskLayer.path = maskPath.CGPath;
         self.skipBtn.layer.mask = maskLayer;
-        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        [manager downloadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-            
-        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            if (image) {
-                 [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
-            }
-        }];
+        if(url){
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                if (image) {
+                    [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
+                }
+            }];
+        }
+        
         self.aDImgView.tag = 1101;
         self.aDImgView.backgroundColor = [UIColor redColor];
         [self addSubview:self.aDImgView];
@@ -154,18 +156,15 @@
 - (void)onTimer {
     
     if (_adTime == 0) {
-        _adTime = 6;
-    }
-    if (_secondsCountDown < _adTime) {
-        _secondsCountDown++;
-        [self.skipBtn setTitle:[NSString stringWithFormat:@"%@ | 跳过",@(_secondsCountDown)] forState:UIControlStateNormal];
-    }else{
-        
         [countDownTimer invalidate];
         countDownTimer = nil;
         [self startcloseAnimation];
         
+    }else{
+        [self.skipBtn setTitle:[NSString stringWithFormat:@"%@ | 跳过",@(_adTime--)] forState:UIControlStateNormal];
+        
     }
+    
 }
 
 #pragma mark - 指定宽度按比例缩放
@@ -223,6 +222,13 @@
     
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+- (void)setLocalAdImgName:(NSString *)localAdImgName{
+    _localAdImgName = localAdImgName;
+    if (_localAdImgName) {
+        self.aDImgView.image = [UIImage imageNamed:_localAdImgName];
+    }
 }
 
 @end

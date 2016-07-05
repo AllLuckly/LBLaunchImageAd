@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A18C7891D0CF29300B7F316 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A18C7881D0CF29300B7F316 /* TestViewController.m */; };
+		6AC3A3EA1D2B66D100A17E5E /* qidong.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AC3A3E91D2B66D100A17E5E /* qidong.png */; };
 		6ADA33C81D07F37200B13CDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADA33C71D07F37200B13CDF /* main.m */; };
 		6ADA33CB1D07F37200B13CDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADA33CA1D07F37200B13CDF /* AppDelegate.m */; };
 		6ADA33CE1D07F37200B13CDF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADA33CD1D07F37200B13CDF /* ViewController.m */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		6A18C7871D0CF29300B7F316 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		6A18C7881D0CF29300B7F316 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		6AC3A3E91D2B66D100A17E5E /* qidong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qidong.png; sourceTree = "<group>"; };
 		6ADA33C31D07F37200B13CDF /* LBLaunchImageAd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBLaunchImageAd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADA33C71D07F37200B13CDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6ADA33C91D07F37200B13CDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		6ADA33C61D07F37200B13CDF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6AC3A3E91D2B66D100A17E5E /* qidong.png */,
 				6ADA33C71D07F37200B13CDF /* main.m */,
 			);
 			name = "Supporting Files";
@@ -340,6 +343,7 @@
 			files = (
 				6ADA33D31D07F37200B13CDF /* Assets.xcassets in Resources */,
 				6ADA33D11D07F37200B13CDF /* Main.storyboard in Resources */,
+				6AC3A3EA1D2B66D100A17E5E /* qidong.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

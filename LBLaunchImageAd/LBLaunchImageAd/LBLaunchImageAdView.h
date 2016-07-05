@@ -27,6 +27,7 @@ typedef void (^LBClick) (NSInteger tag);
 @property (strong, nonatomic) UIWindow *window;
 @property (assign, nonatomic) NSInteger adTime; //倒计时总时长,默认6秒
 @property (strong, nonatomic) UIButton *skipBtn;
+@property (strong, nonatomic) NSString *localAdImgName;//本地图片名字
 @property (nonatomic, copy)LBClick clickBlock;
 
 - (instancetype)initWithWindow:(UIWindow *)window andType:(NSInteger)type andImgUrl:(NSString *)url;
