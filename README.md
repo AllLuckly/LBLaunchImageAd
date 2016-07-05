@@ -4,6 +4,7 @@
 
 ###[iOS开发学习app下载](https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8)
 
+###[实现原理介绍](http://www.jianshu.com/p/10c35dfc0a4a)
 
 效果图如下：
 
