@@ -7,7 +7,7 @@
 //  iOS开发学习app下载https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8
 
 #import "LBLaunchImageAdView.h"
-
+#import "UIImageView+WebCache.h"
 @interface LBLaunchImageAdView()
 {
     NSTimer *countDownTimer;

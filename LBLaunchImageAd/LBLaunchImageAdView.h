@@ -15,7 +15,7 @@ typedef enum {
 
 
 #import <UIKit/UIKit.h>
-#import "UIImageView+WebCache.h"
+
 
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
