@@ -163,7 +163,7 @@
         [self startcloseAnimation];
         
     }else{
-        [self.skipBtn setTitle:[NSString stringWithFormat:@"%ld | 跳过",(long)_adTime--] forState:UIControlStateNormal];
+        [self.skipBtn setTitle:[NSString stringWithFormat:@"%@ | 跳过",@(_adTime--)] forState:UIControlStateNormal];
         
     }
     
