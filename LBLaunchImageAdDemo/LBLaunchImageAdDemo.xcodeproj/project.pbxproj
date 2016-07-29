@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A3999A91D4996750033F2F0 /* LBLaunchImageAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3999A81D4996750033F2F0 /* LBLaunchImageAdView.m */; };
 		6A614DED1D41E58100CAB478 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DEC1D41E58100CAB478 /* main.m */; };
 		6A614DF01D41E58100CAB478 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DEF1D41E58100CAB478 /* AppDelegate.m */; };
 		6A614DF31D41E58100CAB478 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DF21D41E58100CAB478 /* ViewController.m */; };
@@ -30,6 +29,7 @@
 		6A614E4C1D41E60500CAB478 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614E3D1D41E60500CAB478 /* UIImageView+WebCache.m */; };
 		6A614E4D1D41E60500CAB478 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614E3F1D41E60500CAB478 /* UIView+WebCacheOperation.m */; };
 		6A614E501D41E85200CAB478 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614E4F1D41E85200CAB478 /* TestViewController.m */; };
+		6ADF4A981D4B364900F3DD81 /* LBLaunchImageAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3999A81D4996750033F2F0 /* LBLaunchImageAdView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,7 @@
 
 /* Begin PBXFileReference section */
 		6A3999A71D4996750033F2F0 /* LBLaunchImageAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLaunchImageAdView.h; sourceTree = "<group>"; };
-		6A3999A81D4996750033F2F0 /* LBLaunchImageAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLaunchImageAdView.m; sourceTree = "<group>"; };
+		6A3999A81D4996750033F2F0 /* LBLaunchImageAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LBLaunchImageAdView.m; sourceTree = "<group>"; };
 		6A614DE81D41E58100CAB478 /* LBLaunchImageAdDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBLaunchImageAdDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A614DEC1D41E58100CAB478 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A614DEE1D41E58100CAB478 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -378,7 +378,7 @@
 				6A614DF01D41E58100CAB478 /* AppDelegate.m in Sources */,
 				6A614E481D41E60500CAB478 /* UIButton+WebCache.m in Sources */,
 				6A614E471D41E60500CAB478 /* SDWebImagePrefetcher.m in Sources */,
-				6A3999A91D4996750033F2F0 /* LBLaunchImageAdView.m in Sources */,
+				6ADF4A981D4B364900F3DD81 /* LBLaunchImageAdView.m in Sources */,
 				6A614E421D41E60500CAB478 /* SDWebImageCompat.m in Sources */,
 				6A614E491D41E60500CAB478 /* UIImage+GIF.m in Sources */,
 				6A614E4D1D41E60500CAB478 /* UIView+WebCacheOperation.m in Sources */,
@@ -433,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -478,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -547,6 +549,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				INFOPLIST_FILE = LBLaunchImageAdDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BISON.LBLaunchImageAdDemoTests;
@@ -559,6 +562,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				INFOPLIST_FILE = LBLaunchImageAdDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BISON.LBLaunchImageAdDemoTests;
@@ -570,6 +574,7 @@
 		6A614E1C1D41E58200CAB478 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				INFOPLIST_FILE = LBLaunchImageAdDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BISON.LBLaunchImageAdDemoUITests;
@@ -581,6 +586,7 @@
 		6A614E1D1D41E58200CAB478 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				INFOPLIST_FILE = LBLaunchImageAdDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BISON.LBLaunchImageAdDemoUITests;
