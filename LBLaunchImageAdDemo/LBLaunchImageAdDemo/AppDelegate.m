@@ -20,18 +20,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     /* FullScreenAdType 全屏广告
      * LogoAdType 带logo的广告类似网易广告，值得注意的是启动图片必须带logo图
-     * ImgUrl  图片url
+     * imgUrl  图片url
      */
-    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window andType:FullScreenAdType andImgUrl:@"http://www.uisheji.com/wp-content/uploads/2013/04/19/app-design-uisheji-ui-icon20121_55.jpg"];
+    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window andType:LogoAdType];
     
+    ///在确认url有值后写，否则会出现突然白一下的情况
+    adView.imgUrl = @"http://www.uisheji.com/wp-content/uploads/2013/04/19/app-design-uisheji-ui-icon20121_55.jpg";
     
     /* FullScreenAdType 全屏广告
      * LogoAdType 带logo的广告类似网易广告，值得注意的是启动图片必须带logo图
      * localAdImgName  本地图片名字
      */
-    //    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window andType:FullScreenAdType andImgUrl:nil];
+    //    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window andType:FullScreenAdType];
     //    adView.localAdImgName = @"qidong.png";
     
     //各种回调

@@ -1,4 +1,4 @@
-//
+//  好用请star：https://github.com/AllLuckly/LBLaunchImageAd
 //  LBLaunchImageAdView.m
 //  LBLaunchImageAd
 //  技术交流群：534926022（免费） 511040024(0.8/人付费)
@@ -21,7 +21,7 @@
 
 @implementation LBLaunchImageAdView
 
-- (instancetype)initWithWindow:(UIWindow *)window andType:(NSInteger)type andImgUrl:(NSString *)url
+- (instancetype)initWithWindow:(UIWindow *)window andType:(NSInteger)type
 {
     self = [super init];
     if (self) {
@@ -68,17 +68,6 @@
         maskLayer.frame = self.skipBtn.bounds;
         maskLayer.path = maskPath.CGPath;
         self.skipBtn.layer.mask = maskLayer;
-        if(url){
-            SDWebImageManager *manager = [SDWebImageManager sharedManager];
-            [manager downloadImageWithURL:[NSURL URLWithString:url] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                
-            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                if (image) {
-                    [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
-                }
-            }];
-        }
-        
         self.aDImgView.tag = 1101;
         [self addSubview:self.aDImgView];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(activiTap:)];
@@ -230,6 +219,20 @@
     _localAdImgName = localAdImgName;
     if (_localAdImgName) {
         self.aDImgView.image = [UIImage imageNamed:_localAdImgName];
+    }
+}
+
+-(void)setImgUrl:(NSString *)imgUrl{
+    _imgUrl = imgUrl;
+    if (_imgUrl) {
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:[NSURL URLWithString:_imgUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            if (image) {
+                [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
+            }
+        }];
     }
 }
 
