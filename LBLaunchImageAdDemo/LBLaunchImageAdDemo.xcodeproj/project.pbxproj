@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A36308F1D5831C4005D614F /* LBLaunchImageAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A36308D1D5831C4005D614F /* LBLaunchImageAdView.m */; };
+		6A3630A81D588E6A005D614F /* qidong.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A3630A71D588E6A005D614F /* qidong.gif */; };
 		6A614DED1D41E58100CAB478 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DEC1D41E58100CAB478 /* main.m */; };
 		6A614DF01D41E58100CAB478 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DEF1D41E58100CAB478 /* AppDelegate.m */; };
 		6A614DF31D41E58100CAB478 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DF21D41E58100CAB478 /* ViewController.m */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		6A36308D1D5831C4005D614F /* LBLaunchImageAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLaunchImageAdView.m; sourceTree = "<group>"; };
 		6A36308E1D5831C4005D614F /* LBLaunchImageAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLaunchImageAdView.h; sourceTree = "<group>"; };
+		6A3630A71D588E6A005D614F /* qidong.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = qidong.gif; sourceTree = "<group>"; };
 		6A614DE81D41E58100CAB478 /* LBLaunchImageAdDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBLaunchImageAdDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A614DEC1D41E58100CAB478 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A614DEE1D41E58100CAB478 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		6A614DDF1D41E58100CAB478 = {
 			isa = PBXGroup;
 			children = (
+				6A3630A71D588E6A005D614F /* qidong.gif */,
 				6A614DEA1D41E58100CAB478 /* LBLaunchImageAdDemo */,
 				6A614E041D41E58200CAB478 /* LBLaunchImageAdDemoTests */,
 				6A614E0F1D41E58200CAB478 /* LBLaunchImageAdDemoUITests */,
@@ -339,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A614DF81D41E58100CAB478 /* Assets.xcassets in Resources */,
+				6A3630A81D588E6A005D614F /* qidong.gif in Resources */,
 				6A614DF61D41E58100CAB478 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

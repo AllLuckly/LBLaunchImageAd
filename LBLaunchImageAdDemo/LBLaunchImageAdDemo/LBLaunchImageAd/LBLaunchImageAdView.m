@@ -218,7 +218,24 @@
 - (void)setLocalAdImgName:(NSString *)localAdImgName{
     _localAdImgName = localAdImgName;
     if (_localAdImgName) {
-        self.aDImgView.image = [UIImage imageNamed:_localAdImgName];
+        if ([_localAdImgName rangeOfString:@".gif"].location  != NSNotFound ) {
+            _localAdImgName  = [_localAdImgName stringByReplacingOccurrencesOfString:@".gif" withString:@""];
+            NSData *gifData = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:_localAdImgName ofType:@"gif"]];
+            UIWebView *webView = [[UIWebView alloc] initWithFrame:self.aDImgView.frame];
+            webView.backgroundColor = [UIColor clearColor];
+            webView.scalesPageToFit = YES;
+            webView.scrollView.scrollEnabled = NO;
+            [webView loadData:gifData MIMEType:@"image/gif" textEncodingName:@"" baseURL:[NSURL URLWithString:@""]];
+            UIButton *clearBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            clearBtn.frame = webView.frame;
+            clearBtn.backgroundColor = [UIColor clearColor];
+            [clearBtn addTarget:self action:@selector(activiTap:) forControlEvents:UIControlEventTouchUpInside];
+            [webView addSubview:clearBtn];
+            [self.aDImgView addSubview:webView];
+            [self.aDImgView bringSubviewToFront:_skipBtn];
+        }else{
+            self.aDImgView.image = [UIImage imageNamed:_localAdImgName];
+        }
     }
 }
 
@@ -235,5 +252,7 @@
         }];
     }
 }
+
+
 
 @end
