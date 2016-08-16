@@ -1,7 +1,7 @@
 //  好用请star：https://github.com/AllLuckly/LBLaunchImageAd
 //  LBLaunchImageAdView.m
 //  LBLaunchImageAd
-//  技术交流群：534926022（免费） 511040024(0.8/人付费)
+//  技术交流群：534926022（免费） 511040024(0.8元/人付费)
 //  Created by gold on 16/6/8.
 //  Copyright © 2016年 Bison. All rights reserved.
 //  iOS开发学习app下载https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8
@@ -16,12 +16,14 @@
 {
     NSTimer *countDownTimer;
 }
+
 @property (strong, nonatomic) NSString *isClick;
+
 @end
 
 @implementation LBLaunchImageAdView
 
-- (instancetype)initWithWindow:(UIWindow *)window andType:(NSInteger)type
+- (instancetype)initWithWindow:(UIWindow *)window adType:(NSInteger)adType
 {
     self = [super init];
     if (self) {
@@ -50,7 +52,7 @@
         UIImage * launchImage = [UIImage imageNamed:launchImageName];
         self.backgroundColor = [UIColor colorWithPatternImage:launchImage];
         self.frame = CGRectMake(0, 0, mainWidth, mainHeight);
-        if (type == FullScreenAdType) {
+        if (adType == FullScreenAdType) {
             self.aDImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight)];
             
         }else{
