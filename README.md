@@ -22,17 +22,19 @@
 ## 如果需要网络请求得到URL的例子如下
 
 ```
+    //初始化一个adView
     LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window adType:LogoAdType];
-        
+    //举个例子[LBNetWork PostAPI:url Dic:nil Suc:^(NSDictionary *Res)是自己封装的网络请求    
     [LBNetWork PostAPI:url Dic:nil Suc:^(NSDictionary *Res) {
 
         NSArray *arr = Res[@"resultContent"];
         NSString *imgURL = nil;
         for (NSDictionary *dic in arr) {
-            imgURL = [NSString stringWithFormat:@"http://111.1.1.7:8088/newWisdomminshengFv/%@",dic[@"imgpath"]] ;
+            imgURL = [NSString stringWithFormat:@"xxxxx%@",dic[@"imgpath"]] ;
         }
+        //关键地方
         if (imgURL) {
-            adView.imgUrl = @"http://www.uisheji.com/wp-content/uploads/2013/04/19/app-design-uisheji-ui-icon20121_55.jpg";
+            adView.imgUrl = imgURL;
             //各种回调
             adView.clickBlock = ^(NSInteger tag){
                 switch (tag) {
