@@ -22,7 +22,7 @@
 ## 如果需要网络请求得到URL的例子如下
 
 ```
-    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window andType:LogoAdType];
+    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window adType:LogoAdType];
         
     [LBNetWork PostAPI:url Dic:nil Suc:^(NSDictionary *Res) {
 
@@ -65,7 +65,7 @@
 ## 如果直接是固定的图片Url
 
 ```
-    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window andType:LogoAdType];
+    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window adType:LogoAdType];
     adView.imgUrl = @"http://www.uisheji.com/wp-content/uploads/2013/04/19/app-design-uisheji-ui-icon20121_55.jpg";
     adView.clickBlock = ^(NSInteger tag){
         switch (tag) {
@@ -94,7 +94,7 @@
 
 ```
 
-LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window andType:FullScreenAdType];
+LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window adType:FullScreenAdType];
 adView.localAdImgName = @"qidong.png"; 
 //各种回调
 adView.clickBlock = ^(NSInteger tag){
