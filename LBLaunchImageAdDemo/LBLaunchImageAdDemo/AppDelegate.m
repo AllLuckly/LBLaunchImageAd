@@ -26,7 +26,7 @@
      * imgUrl  图片url
      */
     
-//    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window andType:LogoAdType];
+//    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window adType:LogoAdType];
 //    
 //    ///在确认url有值后写，否则会出现突然白一下的情况
 //    adView.imgUrl = @"http://www.uisheji.com/wp-content/uploads/2013/04/19/app-design-uisheji-ui-icon20121_55.jpg";
