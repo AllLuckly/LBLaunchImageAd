@@ -18,5 +18,5 @@ script:
     - xctool -workspace LBLaunchImageAdDemo.xcworkspace -scheme 'LBLaunchImageAdDemo' -sdk iphonesimulator build
 
     - pod install --project-directory=Tests
-    - xctool -workspace LBLaunchImageAdDemo.xcworkspace -scheme 'LBLaunchImageAd' -sdk iphonesimulator clean
+    - xctool -workspace LBLaunchImageAdDemo.xcworkspace -scheme 'LBLaunchImageAdDemo' -sdk iphonesimulator clean
     
