@@ -1,7 +1,7 @@
 # LBLaunchImageAd
 
 [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/lblaunchimagead)
-[![Build Status](http://img.shields.io/travis/rs/LBLaunchImageAd/master.svg?style=flat)](https://travis-ci.org/AllLuckly/LBLaunchImageAd)
+[![Build Status](http://img.shields.io/travis/AllLuckly/LBLaunchImageAd/master.svg?style=flat)](https://travis-ci.org/AllLuckly/LBLaunchImageAd)
 
 ##技术交流群：534926022（免费） 511040024(0.8/人付费)
 
