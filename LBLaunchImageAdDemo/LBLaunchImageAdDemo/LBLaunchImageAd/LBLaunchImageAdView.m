@@ -23,11 +23,10 @@
 
 @implementation LBLaunchImageAdView
 
-- (instancetype)initWithWindow:(UIWindow *)window adType:(NSInteger)adType
+- (instancetype)initWithWindow:(UIWindow *)window adType:(AdType)adType
 {
     self = [super init];
     if (self) {
-        self.window = window;
         _adTime = 6;
         [window makeKeyAndVisible];
         //获取启动图片
@@ -43,7 +42,6 @@
         {
             CGSize imageSize = CGSizeFromString(dict[@"UILaunchImageSize"]);
             if (CGSizeEqualToSize(imageSize, viewSize) && [viewOrientation isEqualToString:dict[@"UILaunchImageOrientation"]])
-                
             {
                 launchImageName = dict[@"UILaunchImageName"];
             }
@@ -54,11 +52,9 @@
         self.frame = CGRectMake(0, 0, mainWidth, mainHeight);
         if (adType == FullScreenAdType) {
             self.aDImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight)];
-            
         }else{
             self.aDImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight - mainWidth/3)];
         }
-        
         self.skipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         self.skipBtn.frame = CGRectMake(mainWidth - 70, 20, 60, 30);
         self.skipBtn.backgroundColor = [UIColor brownColor];
@@ -76,17 +72,14 @@
         // 允许用户交互
         self.aDImgView.userInteractionEnabled = YES;
         [self.aDImgView addGestureRecognizer:tap];
-        
         CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
         opacityAnimation.duration = 0.8;
         opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
         opacityAnimation.toValue = [NSNumber numberWithFloat:0.8];
-        
         opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        
         [self.aDImgView.layer addAnimation:opacityAnimation forKey:@"animateOpacity"];
         countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
-        [self.window addSubview:self];
+        [window addSubview:self];
     }
     return self;
 }
@@ -129,7 +122,6 @@
     self.aDImgView.hidden = YES;
     [self removeFromSuperview];
     if ([_isClick integerValue] == 1) {
-        
         if (self.clickBlock) {//点击广告
             self.clickBlock(1100);
         }
@@ -142,22 +134,16 @@
             self.clickBlock(1102);
         }
     }
-    
-   
 }
 
 - (void)onTimer {
-    
     if (_adTime == 0) {
         [countDownTimer invalidate];
         countDownTimer = nil;
         [self startcloseAnimation];
-        
     }else{
         [self.skipBtn setTitle:[NSString stringWithFormat:@"%@ | 跳过",@(_adTime--)] forState:UIControlStateNormal];
-        
     }
-    
 }
 
 #pragma mark - 指定宽度按比例缩放
@@ -246,7 +232,6 @@
     if (_imgUrl) {
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
         [manager downloadImageWithURL:[NSURL URLWithString:_imgUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-            
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             if (image) {
                 [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
