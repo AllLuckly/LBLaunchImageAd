@@ -33,9 +33,7 @@
         CGSize viewSize = window.bounds.size;
         //横屏请设置成 @"Landscape"
         NSString *viewOrientation = @"Portrait";
-        
         NSString *launchImageName = nil;
-        
         NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
         for (NSDictionary* dict in imagesDict)
             
