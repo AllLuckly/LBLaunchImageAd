@@ -5,11 +5,11 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/AllLuckly/LBLaunchImageAd)
 
 
-##技术交流群：534926022（免费） 511040024(0.8/人付费)
+## 技术交流群：534926022（免费） 511040024(0.8/人付费)
 
-###[iOS开发学习app下载](https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8)
+### [iOS开发学习app下载](https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8)
 
-###[实现原理介绍](http://www.jianshu.com/p/10c35dfc0a4a)
+### [实现原理介绍](http://www.jianshu.com/p/10c35dfc0a4a)
 
 效果图如下：
 
@@ -28,7 +28,7 @@
 
 ```
     //初始化一个adView
-    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window adType:LogoAdType];
+    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]init];
     //举个例子[LBNetWork PostAPI:url Dic:nil Suc:^(NSDictionary *Res)是自己封装的网络请求    
     [LBNetWork PostAPI:url Dic:nil Suc:^(NSDictionary *Res) {
 
@@ -39,6 +39,7 @@
         }
         //关键地方
         if (imgURL) {
+            adView.getLBlaunchImageAdViewType(LogoAdType);
             adView.imgUrl = imgURL;
             //各种回调
             adView.clickBlock = ^(NSInteger tag){
@@ -61,8 +62,7 @@
                 
             };
         }
-        
-        
+
     } Fai:^(NSURLSessionDataTask *operation) {
         
     }];
@@ -72,7 +72,8 @@
 ## 如果直接是固定的图片Url
 
 ```
-    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window adType:LogoAdType];
+    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]init];
+    adView.getLBlaunchImageAdViewType(LogoAdType);
     adView.imgUrl = @"http://www.uisheji.com/wp-content/uploads/2013/04/19/app-design-uisheji-ui-icon20121_55.jpg";
     adView.clickBlock = ^(NSInteger tag){
         switch (tag) {
@@ -101,7 +102,8 @@
 
 ```
 
-LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]initWithWindow:self.window adType:FullScreenAdType];
+LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]init];
+adView.getLBlaunchImageAdViewType(LogoAdType);
 adView.localAdImgName = @"qidong.png"; 
 //各种回调
 adView.clickBlock = ^(NSInteger tag){
