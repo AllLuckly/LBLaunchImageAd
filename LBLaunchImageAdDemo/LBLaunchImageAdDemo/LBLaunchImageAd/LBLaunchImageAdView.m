@@ -8,6 +8,7 @@
 
 #import "LBLaunchImageAdView.h"
 #import "UIImageView+WebCache.h"
+#import "AppDelegate.h"
 
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
@@ -23,63 +24,12 @@
 
 @implementation LBLaunchImageAdView
 
-- (instancetype)initWithWindow:(UIWindow *)window adType:(AdType)adType
-{
-    self = [super init];
-    if (self) {
-        _adTime = 6;
-        [window makeKeyAndVisible];
-        //获取启动图片
-        CGSize viewSize = window.bounds.size;
-        //横屏请设置成 @"Landscape"
-        NSString *viewOrientation = @"Portrait";
-        NSString *launchImageName = nil;
-        NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
-        for (NSDictionary* dict in imagesDict)
-            
-        {
-            CGSize imageSize = CGSizeFromString(dict[@"UILaunchImageSize"]);
-            if (CGSizeEqualToSize(imageSize, viewSize) && [viewOrientation isEqualToString:dict[@"UILaunchImageOrientation"]])
-            {
-                launchImageName = dict[@"UILaunchImageName"];
-            }
-            
-        }
-        UIImage * launchImage = [UIImage imageNamed:launchImageName];
-        self.backgroundColor = [UIColor colorWithPatternImage:launchImage];
-        self.frame = CGRectMake(0, 0, mainWidth, mainHeight);
-        if (adType == FullScreenAdType) {
-            self.aDImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight)];
-        }else{
-            self.aDImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight - mainWidth/3)];
-        }
-        self.skipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.skipBtn.frame = CGRectMake(mainWidth - 70, 20, 60, 30);
-        self.skipBtn.backgroundColor = [UIColor brownColor];
-        self.skipBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [self.skipBtn addTarget:self action:@selector(skipBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [self.aDImgView addSubview:self.skipBtn];
-        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.skipBtn.bounds byRoundingCorners:UIRectCornerBottomRight | UIRectCornerTopRight cornerRadii:CGSizeMake(15, 15)];
-        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-        maskLayer.frame = self.skipBtn.bounds;
-        maskLayer.path = maskPath.CGPath;
-        self.skipBtn.layer.mask = maskLayer;
-        self.aDImgView.tag = 1101;
-        [self addSubview:self.aDImgView];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(activiTap:)];
-        // 允许用户交互
-        self.aDImgView.userInteractionEnabled = YES;
-        [self.aDImgView addGestureRecognizer:tap];
-        CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-        opacityAnimation.duration = 0.8;
-        opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
-        opacityAnimation.toValue = [NSNumber numberWithFloat:0.8];
-        opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        [self.aDImgView.layer addAnimation:opacityAnimation forKey:@"animateOpacity"];
-        countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
-        [window addSubview:self];
-    }
-    return self;
+#pragma mark - 获取广告类型
+- (void(^)(AdType adType))getLBlaunchImageAdViewType{
+    __weak typeof(self) weakSelf = self;
+    return ^(AdType adType){
+        [weakSelf addLBlaunchImageAdView:adType];
+    };
 }
 
 #pragma mark - 点击广告
@@ -239,5 +189,58 @@
 }
 
 
+
+- (void)addLBlaunchImageAdView:(AdType)adType{
+    _adTime = 6;
+    AppDelegate * appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [appDelegate.window makeKeyAndVisible];
+    //获取启动图片
+    CGSize viewSize = appDelegate.window.bounds.size;
+    //横屏请设置成 @"Landscape"
+    NSString *viewOrientation = @"Portrait";
+    __block NSString *launchImageName = nil;
+    NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
+    [imagesDict enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGSize imageSize = CGSizeFromString(obj[@"UILaunchImageSize"]);
+        if (CGSizeEqualToSize(imageSize, viewSize) && [viewOrientation isEqualToString:obj[@"UILaunchImageOrientation"]])
+        {
+            launchImageName = obj[@"UILaunchImageName"];
+        }
+    }];
+    UIImage * launchImage = [UIImage imageNamed:launchImageName];
+    self.backgroundColor = [UIColor colorWithPatternImage:launchImage];
+    self.frame = CGRectMake(0, 0, mainWidth, mainHeight);
+    if (adType == FullScreenAdType) {
+        self.aDImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight)];
+    }else{
+        self.aDImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight - mainWidth/3)];
+    }
+    self.skipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.skipBtn.frame = CGRectMake(mainWidth - 70, 20, 60, 30);
+    self.skipBtn.backgroundColor = [UIColor brownColor];
+    self.skipBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.skipBtn addTarget:self action:@selector(skipBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.aDImgView addSubview:self.skipBtn];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.skipBtn.bounds byRoundingCorners:UIRectCornerBottomRight | UIRectCornerTopRight cornerRadii:CGSizeMake(15, 15)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.skipBtn.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.skipBtn.layer.mask = maskLayer;
+    self.aDImgView.tag = 1101;
+    [self addSubview:self.aDImgView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(activiTap:)];
+    // 允许用户交互
+    self.aDImgView.userInteractionEnabled = YES;
+    [self.aDImgView addGestureRecognizer:tap];
+    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacityAnimation.duration = 0.8;
+    opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+    opacityAnimation.toValue = [NSNumber numberWithFloat:0.8];
+    opacityAnimation.fillMode = kCAFillModeForwards;
+    opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [self.aDImgView.layer addAnimation:opacityAnimation forKey:@"animateOpacity"];
+    countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
+    [appDelegate.window addSubview:self];
+}
 
 @end

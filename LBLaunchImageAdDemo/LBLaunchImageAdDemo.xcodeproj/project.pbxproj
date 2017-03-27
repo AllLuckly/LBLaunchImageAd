@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A36308F1D5831C4005D614F /* LBLaunchImageAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A36308D1D5831C4005D614F /* LBLaunchImageAdView.m */; };
-		6A3630A81D588E6A005D614F /* qidong.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A3630A71D588E6A005D614F /* qidong.gif */; };
+		6A3AD29F1E88D23E0034B704 /* qidong.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A3AD29E1E88D23E0034B704 /* qidong.gif */; };
 		6A614DED1D41E58100CAB478 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DEC1D41E58100CAB478 /* main.m */; };
 		6A614DF01D41E58100CAB478 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DEF1D41E58100CAB478 /* AppDelegate.m */; };
 		6A614DF31D41E58100CAB478 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DF21D41E58100CAB478 /* ViewController.m */; };
@@ -53,7 +53,7 @@
 /* Begin PBXFileReference section */
 		6A36308D1D5831C4005D614F /* LBLaunchImageAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLaunchImageAdView.m; sourceTree = "<group>"; };
 		6A36308E1D5831C4005D614F /* LBLaunchImageAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLaunchImageAdView.h; sourceTree = "<group>"; };
-		6A3630A71D588E6A005D614F /* qidong.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = qidong.gif; sourceTree = "<group>"; };
+		6A3AD29E1E88D23E0034B704 /* qidong.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = qidong.gif; path = ../qidong.gif; sourceTree = "<group>"; };
 		6A614DE81D41E58100CAB478 /* LBLaunchImageAdDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBLaunchImageAdDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A614DEC1D41E58100CAB478 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A614DEE1D41E58100CAB478 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -139,7 +139,6 @@
 		6A614DDF1D41E58100CAB478 = {
 			isa = PBXGroup;
 			children = (
-				6A3630A71D588E6A005D614F /* qidong.gif */,
 				6A614DEA1D41E58100CAB478 /* LBLaunchImageAdDemo */,
 				6A614E041D41E58200CAB478 /* LBLaunchImageAdDemoTests */,
 				6A614E0F1D41E58200CAB478 /* LBLaunchImageAdDemoUITests */,
@@ -179,6 +178,7 @@
 		6A614DEB1D41E58100CAB478 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6A3AD29E1E88D23E0034B704 /* qidong.gif */,
 				6A614DEC1D41E58100CAB478 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -305,6 +305,7 @@
 				TargetAttributes = {
 					6A614DE71D41E58100CAB478 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 7UH29K5MGM;
 					};
 					6A614E001D41E58200CAB478 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -342,7 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A614DF81D41E58100CAB478 /* Assets.xcassets in Resources */,
-				6A3630A81D588E6A005D614F /* qidong.gif in Resources */,
+				6A3AD29F1E88D23E0034B704 /* qidong.gif in Resources */,
 				6A614DF61D41E58100CAB478 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +453,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -498,6 +500,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -526,11 +529,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LBLaunchImageAdDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BISON.LBLaunchImageAdDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -541,11 +547,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LBLaunchImageAdDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BISON.LBLaunchImageAdDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

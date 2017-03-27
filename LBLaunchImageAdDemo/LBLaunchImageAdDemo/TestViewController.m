@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8
-    NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8"];
+    NSURL *url = [NSURL URLWithString:@"https://github.com/AllLuckly/LBLaunchImageAd"];
     [[UIApplication sharedApplication] openURL:url];
 }
 

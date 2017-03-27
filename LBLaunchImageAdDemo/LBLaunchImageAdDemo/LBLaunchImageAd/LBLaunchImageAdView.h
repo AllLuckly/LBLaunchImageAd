@@ -29,10 +29,9 @@ typedef void (^LBClick) (NSInteger tag);
 
 @property (nonatomic, copy)LBClick clickBlock;
 
-/* window 当前的window
- *
+/*
  *  adType 广告类型
  */
-- (instancetype)initWithWindow:(UIWindow *)window adType:(AdType)adType;
+- (void(^)(AdType adType))getLBlaunchImageAdViewType;
 
 @end
