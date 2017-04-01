@@ -11,9 +11,15 @@ typedef enum {
     FullScreenAdType = 1,///全屏的广告
 }AdType;
 
+typedef enum {
+    skipAdType = 0,///点击跳过
+    clickAdType = 1,///点击广告
+    overtimeAdType = 2,///倒计时完成跳过
+}clickType;
+
 #import <UIKit/UIKit.h>
 
-typedef void (^LBClick) (NSInteger tag);
+typedef void (^LBClick) (clickType);
 
 @interface LBLaunchImageAdView : UIView
 

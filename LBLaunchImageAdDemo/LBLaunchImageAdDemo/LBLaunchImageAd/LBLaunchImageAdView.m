@@ -25,7 +25,7 @@
 @implementation LBLaunchImageAdView
 
 #pragma mark - 获取广告类型
-- (void(^)(AdType adType))getLBlaunchImageAdViewType{
+- (void (^)(AdType adType))getLBlaunchImageAdViewType{
     __weak typeof(self) weakSelf = self;
     return ^(AdType adType){
         [weakSelf addLBlaunchImageAdView:adType];
@@ -71,15 +71,15 @@
     [self removeFromSuperview];
     if ([_isClick integerValue] == 1) {
         if (self.clickBlock) {//点击广告
-            self.clickBlock(1100);
+            self.clickBlock(clickAdType);
         }
     }else if([_isClick integerValue] == 2){
         if (self.clickBlock) {//点击跳过
-            self.clickBlock(1101);
+            self.clickBlock(skipAdType);
         }
     }else{
-        if (self.clickBlock) {//点击跳过
-            self.clickBlock(1102);
+        if (self.clickBlock) {
+            self.clickBlock(overtimeAdType);
         }
     }
 }

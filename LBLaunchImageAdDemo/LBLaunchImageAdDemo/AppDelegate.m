@@ -8,9 +8,8 @@
 //  iOS开发学习app下载https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8
 
 #import "AppDelegate.h"
-
-#import "LBLaunchImageAdView.h"
 #import "TestViewController.h"
+#import "NSObject+LBLaunchImage.h"
 
 @interface AppDelegate ()
 
@@ -36,33 +35,39 @@
      * LogoAdType 带logo的广告类似网易广告，值得注意的是启动图片必须带logo图
      * localAdImgName  本地图片名字
      */
-    
-    LBLaunchImageAdView * adView = [[LBLaunchImageAdView alloc]init];
-    adView.getLBlaunchImageAdViewType(LogoAdType);
-    adView.localAdImgName = @"qidong.gif";
-    //各种回调
-    adView.clickBlock = ^(NSInteger tag){
-        switch (tag) {
-            case 1100:{
-                NSLog(@"点击广告回调");
-                TestViewController *vc = [[TestViewController alloc]init];
-                vc.view.backgroundColor = [UIColor whiteColor];
-                [self.window.rootViewController presentViewController:vc animated:YES completion:^{
-                    
-                }];
+    __weak typeof(self) weakSelf = self;
+    [NSObject makeLBLaunchImageAdView:^(LBLaunchImageAdView *imgAdView) {
+        //设置广告的类型
+        imgAdView.getLBlaunchImageAdViewType(LogoAdType);
+        //设置本地启动图片
+        imgAdView.localAdImgName = @"qidong.gif";
+        //自定义跳过按钮
+        imgAdView.skipBtn.backgroundColor = [UIColor blackColor];
+        //各种点击事件的回调
+        imgAdView.clickBlock = ^(clickType type){
+            switch (type) {
+                case clickAdType:{
+                    NSLog(@"点击广告回调");
+                    TestViewController *vc = [[TestViewController alloc]init];
+                    vc.view.backgroundColor = [UIColor whiteColor];
+                    [weakSelf.window.rootViewController presentViewController:vc animated:YES completion:^{
+
+                    }];
+                }
+                    break;
+                case skipAdType:
+                    NSLog(@"点击跳过回调");
+                    break;
+                case overtimeAdType:
+                    NSLog(@"倒计时完成后的回调");
+                    break;
+                default:
+                    break;
             }
-                break;
-            case 1101:
-                NSLog(@"点击跳过回调");
-                break;
-            case 1102:
-                NSLog(@"倒计时完成后的回调");
-                break;
-            default:
-                break;
-        }
-        
-    };
+        };
+       
+    }];
+    
 
     return YES;
 }
