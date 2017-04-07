@@ -4,6 +4,12 @@
 [![Build Status](http://img.shields.io/travis/AllLuckly/LBLaunchImageAd/master.svg?style=flat)](https://travis-ci.org/AllLuckly/LBLaunchImageAd)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/AllLuckly/LBLaunchImageAd)
 
+## 支持pod导入
+
+pod 'LBLaunchImageAd','~> 1.0.0'
+
+如果发现pod search LBLaunchImageAd 搜索出来的不是最新版本，需要在终端执行cd转换文件路径命令退回到desktop，然后执行pod setup命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了
+
 ## 2017/4/1号更新：
 
 ### 1.优化封装调用接口
@@ -161,5 +167,4 @@ __weak typeof(self) weakSelf = self;
     }];
 
 ```
-
 
