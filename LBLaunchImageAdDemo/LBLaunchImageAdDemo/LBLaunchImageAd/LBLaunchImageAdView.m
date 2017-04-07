@@ -8,7 +8,7 @@
 
 #import "LBLaunchImageAdView.h"
 #import "UIImageView+WebCache.h"
-#import "AppDelegate.h"
+
 
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
@@ -192,10 +192,9 @@
 
 - (void)addLBlaunchImageAdView:(AdType)adType{
     _adTime = 6;
-    AppDelegate * appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    [appDelegate.window makeKeyAndVisible];
+
     //获取启动图片
-    CGSize viewSize = appDelegate.window.bounds.size;
+    CGSize viewSize = [UIApplication sharedApplication].delegate.window.bounds.size;
     //横屏请设置成 @"Landscape"
     NSString *viewOrientation = @"Portrait";
     __block NSString *launchImageName = nil;
@@ -240,7 +239,7 @@
     opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [self.aDImgView.layer addAnimation:opacityAnimation forKey:@"animateOpacity"];
     countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
-    [appDelegate.window addSubview:self];
+    [[UIApplication sharedApplication].delegate.window addSubview:self];
 }
 
 @end
