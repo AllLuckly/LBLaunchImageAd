@@ -15,9 +15,9 @@ typedef enum {
 
 typedef enum {
     
-    skipAdType = 0,///点击跳过
-    clickAdType = 1,///点击广告
-    overtimeAdType = 2,///倒计时完成跳过
+    skipAdType = 1,///点击跳过
+    clickAdType = 2,///点击广告
+    overtimeAdType = 3,///倒计时完成跳过
     
 }clickType;
 
