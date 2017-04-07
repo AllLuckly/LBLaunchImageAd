@@ -71,7 +71,7 @@
     [self removeFromSuperview];
     if ([_isClick integerValue] == 1) {
         if (self.clickBlock) {//点击广告
-            self.clickBlock(clickAdType);
+            self.clickBlock(clickAdType); 
         }
     }else if([_isClick integerValue] == 2){
         if (self.clickBlock) {//点击跳过

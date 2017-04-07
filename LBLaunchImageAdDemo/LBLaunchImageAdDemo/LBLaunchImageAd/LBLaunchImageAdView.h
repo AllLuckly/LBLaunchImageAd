@@ -7,19 +7,23 @@
 //  iOS开发学习app下载https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8
 
 typedef enum {
+    
     LogoAdType = 0,///带logo的广告
     FullScreenAdType = 1,///全屏的广告
+    
 }AdType;
 
 typedef enum {
+    
     skipAdType = 0,///点击跳过
     clickAdType = 1,///点击广告
     overtimeAdType = 2,///倒计时完成跳过
+    
 }clickType;
 
 #import <UIKit/UIKit.h>
 
-typedef void (^LBClick) (clickType);
+typedef void (^LBClick) (const clickType);
 
 @interface LBLaunchImageAdView : UIView
 
@@ -31,13 +35,13 @@ typedef void (^LBClick) (clickType);
 ///本地图片名字
 @property (nonatomic, strong) NSString *localAdImgName;
 ///网络图片URL
-@property (nonatomic, strong) NSString *imgUrl;
+@property (nonatomic, copy) NSString *imgUrl;
 
 @property (nonatomic, copy)LBClick clickBlock;
 
 /*
  *  adType 广告类型
  */
-- (void(^)(AdType adType))getLBlaunchImageAdViewType;
+- (void(^)(AdType const adType))getLBlaunchImageAdViewType;
 
 @end

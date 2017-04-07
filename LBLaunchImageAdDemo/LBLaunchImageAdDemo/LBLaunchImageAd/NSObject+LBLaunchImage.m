@@ -9,7 +9,9 @@
 #import "NSObject+LBLaunchImage.h"
 
 @implementation NSObject (LBLaunchImage)
+
 + (void)makeLBLaunchImageAdView:(void(^)(LBLaunchImageAdView *))block{
+    
     LBLaunchImageAdView *imgAdView = [[LBLaunchImageAdView alloc]init];
     block(imgAdView);
 }
