@@ -5,6 +5,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/AllLuckly/LBLaunchImageAd)
 [![Pod Platform](http://img.shields.io/cocoapods/p/LBLaunchImageAd.svg?style=flat)](http://cocoadocs.org/docsets/LBLaunchImageAd/)
 [![Pod Version](http://img.shields.io/cocoapods/v/LBLaunchImageAd.svg?style=flat)](http://cocoadocs.org/docsets/LBLaunchImageAd/)
+[![Pod License](http://img.shields.io/cocoapods/l/LBLaunchImageAd.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 ## 支持pod导入
 
