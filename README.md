@@ -6,7 +6,7 @@
 [![Pod Platform](http://img.shields.io/cocoapods/p/LBLaunchImageAd.svg?style=flat)](http://cocoadocs.org/docsets/LBLaunchImageAd/)
 [![Pod Version](http://img.shields.io/cocoapods/v/LBLaunchImageAd.svg?style=flat)](http://cocoadocs.org/docsets/LBLaunchImageAd/)
 [![Pod License](http://img.shields.io/cocoapods/l/LBLaunchImageAd.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[![Reference Status](https://www.versioneye.com/objective-c/LBLaunchImageAd/reference_badge.svg?style=flat)](https://www.versioneye.com/objective-c/LBLaunchImageAd/references)
+
 
 ## 支持pod导入
 
