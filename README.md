@@ -12,7 +12,14 @@
 
 pod 'LBLaunchImageAd','~> 1.0.0'
 
-如果发现pod search LBLaunchImageAd 搜索出来的不是最新版本，需要在终端执行cd转换文件路径命令退回到desktop，然后执行pod setup命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了
+如果发现`pod search LBLaunchImageAd` 搜索出来的不是最新版本，需要在终端执行cd转换文件路径命令退回到desktop，然后执行`pod setup`命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了;也可以试下如下方法
+
+```
+rm ~/Library/Caches/CocoaPods/search_index.json
+```
+
+然后再`pod search LBLaunchImageAd`
+
 
 ## 2017/4/1号更新：
 
