@@ -33,7 +33,7 @@ typedef void (^LBClick) (const clickType);
 ///跳过按钮 可自定义
 @property (nonatomic, strong) UIButton *skipBtn;
 ///本地图片名字
-@property (nonatomic, strong) NSString *localAdImgName;
+@property (nonatomic, copy) NSString *localAdImgName;
 ///网络图片URL
 @property (nonatomic, copy) NSString *imgUrl;
 
