@@ -153,15 +153,18 @@
 
 - (void)setLocalAdImgName:(NSString *)localAdImgName{
     _localAdImgName = localAdImgName;
-    if (_localAdImgName) {
+    if (_localAdImgName.length > 0) {
         if ([_localAdImgName rangeOfString:@".gif"].location  != NSNotFound ) {
             _localAdImgName  = [_localAdImgName stringByReplacingOccurrencesOfString:@".gif" withString:@""];
+            
+            
             NSData *gifData = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:_localAdImgName ofType:@"gif"]];
             UIWebView *webView = [[UIWebView alloc] initWithFrame:self.aDImgView.frame];
             webView.backgroundColor = [UIColor clearColor];
             webView.scalesPageToFit = YES;
             webView.scrollView.scrollEnabled = NO;
             [webView loadData:gifData MIMEType:@"image/gif" textEncodingName:@"" baseURL:[NSURL URLWithString:@""]];
+            [webView setUserInteractionEnabled:NO];
             UIButton *clearBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             clearBtn.frame = webView.frame;
             clearBtn.backgroundColor = [UIColor clearColor];
@@ -174,6 +177,8 @@
         }
     }
 }
+
+
 
 -(void)setImgUrl:(NSString *)imgUrl{
     _imgUrl = imgUrl;
@@ -192,7 +197,7 @@
 
 - (void)addLBlaunchImageAdView:(AdType)adType{
     _adTime = 6;
-
+    [[UIApplication sharedApplication].delegate.window makeKeyAndVisible];
     //获取启动图片
     CGSize viewSize = [UIApplication sharedApplication].delegate.window.bounds.size;
     //横屏请设置成 @"Landscape"

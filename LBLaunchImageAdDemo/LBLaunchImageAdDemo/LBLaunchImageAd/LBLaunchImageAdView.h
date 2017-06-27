@@ -22,8 +22,10 @@ typedef enum {
 }clickType;
 
 #import <UIKit/UIKit.h>
+#import <ImageIO/ImageIO.h>
 
 typedef void (^LBClick) (const clickType);
+
 
 @interface LBLaunchImageAdView : UIView
 

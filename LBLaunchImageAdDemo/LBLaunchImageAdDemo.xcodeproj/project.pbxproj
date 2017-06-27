@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A0C10A11F023E4900628FD8 /* qidong.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A0C10A01F023E4900628FD8 /* qidong.gif */; };
 		6A36308F1D5831C4005D614F /* LBLaunchImageAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A36308D1D5831C4005D614F /* LBLaunchImageAdView.m */; };
-		6A3AD29F1E88D23E0034B704 /* qidong.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A3AD29E1E88D23E0034B704 /* qidong.gif */; };
 		6A457A641E8F3C6A008DFCC4 /* NSObject+LBLaunchImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A457A631E8F3C6A008DFCC4 /* NSObject+LBLaunchImage.m */; };
 		6A614DED1D41E58100CAB478 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DEC1D41E58100CAB478 /* main.m */; };
 		6A614DF01D41E58100CAB478 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614DEF1D41E58100CAB478 /* AppDelegate.m */; };
@@ -52,9 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A0C10A01F023E4900628FD8 /* qidong.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = qidong.gif; sourceTree = "<group>"; };
 		6A36308D1D5831C4005D614F /* LBLaunchImageAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLaunchImageAdView.m; sourceTree = "<group>"; };
 		6A36308E1D5831C4005D614F /* LBLaunchImageAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLaunchImageAdView.h; sourceTree = "<group>"; };
-		6A3AD29E1E88D23E0034B704 /* qidong.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = qidong.gif; path = ../qidong.gif; sourceTree = "<group>"; };
 		6A457A621E8F3C6A008DFCC4 /* NSObject+LBLaunchImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBLaunchImage.h"; sourceTree = "<group>"; };
 		6A457A631E8F3C6A008DFCC4 /* NSObject+LBLaunchImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBLaunchImage.m"; sourceTree = "<group>"; };
 		6A614DE81D41E58100CAB478 /* LBLaunchImageAdDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBLaunchImageAdDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +144,7 @@
 		6A614DDF1D41E58100CAB478 = {
 			isa = PBXGroup;
 			children = (
+				6A0C10A01F023E4900628FD8 /* qidong.gif */,
 				6A614DEA1D41E58100CAB478 /* LBLaunchImageAdDemo */,
 				6A614E041D41E58200CAB478 /* LBLaunchImageAdDemoTests */,
 				6A614E0F1D41E58200CAB478 /* LBLaunchImageAdDemoUITests */,
@@ -183,7 +184,6 @@
 		6A614DEB1D41E58100CAB478 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6A3AD29E1E88D23E0034B704 /* qidong.gif */,
 				6A614DEC1D41E58100CAB478 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -348,7 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A614DF81D41E58100CAB478 /* Assets.xcassets in Resources */,
-				6A3AD29F1E88D23E0034B704 /* qidong.gif in Resources */,
+				6A0C10A11F023E4900628FD8 /* qidong.gif in Resources */,
 				6A614DF61D41E58100CAB478 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
