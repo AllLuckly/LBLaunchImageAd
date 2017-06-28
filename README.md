@@ -21,6 +21,10 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 然后再`pod search LBLaunchImageAd`
 
 
+## 2017/6/28号更新：
+### 修复bug，修复cocopods版本不同步等问题
+
+
 ## 2017/4/1号更新：
 
 ### 1.优化封装调用接口
