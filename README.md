@@ -21,9 +21,10 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 然后再`pod search LBLaunchImageAd`
 
 ---
+
+`2017年07月17日14:23:03 by:nixs "倪新生" => "1911398892@qq.com"`
+
 ```
-2017年07月17日14:23:03
-by:nixs
 1、#pragma mark - 工程引入cocoapods管理;
 2、#pragma mark - pod 'SDWebImage','~> 4.0.0' 更新;
 3、#pragma mark - iOS开发 强制竖屏。系统KVO 强制竖屏—>适用于支持各种方向屏幕启动时，竖屏展示广告; by:nixs
@@ -31,7 +32,7 @@ by:nixs
 
 ```
 ![](./QQ20170717-142110-HD.gif)
-
+![](./166D7B31-0B02-402B-9F38-04C9424648F1.png)
 ---
 
 ## 2017/6/28号更新：
