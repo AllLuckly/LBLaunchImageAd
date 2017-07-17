@@ -10,11 +10,12 @@ Pod::Spec.new do |s|
 
     s.license      = "MIT"
 
-    s.author             = { "Bison" => "lbjobvip@163.com" }
+    s.author             = { "Bison" => "lbjobvip@163.com",
+                            "倪新生" => "1911398892@qq.com" }
 
     s.social_media_url   = "https://github.com/AllLuckly"
 
-    s.platform     = :ios, "7.0"
+    s.platform     = :ios, "8.0"
 
     s.source       = { :git => "https://github.com/AllLuckly/LBLaunchImageAd.git", :tag => s.version}
 
@@ -22,6 +23,6 @@ Pod::Spec.new do |s|
 
     s.requires_arc = true
     
-    s.dependency 'SDWebImage', '~> 3.7.6'
+    s.dependency 'SDWebImage', '~> 4.0.0'
 
 end
