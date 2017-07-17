@@ -12,7 +12,7 @@
 
 + (void)makeLBLaunchImageAdView:(void(^)(LBLaunchImageAdView *))block{
     
-    LBLaunchImageAdView *imgAdView = [[LBLaunchImageAdView alloc]init];
+    LBLaunchImageAdView *imgAdView = [[LBLaunchImageAdView alloc]init];    
     block(imgAdView);
 }
 @end
