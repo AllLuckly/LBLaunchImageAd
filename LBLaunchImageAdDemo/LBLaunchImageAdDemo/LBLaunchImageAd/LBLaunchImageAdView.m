@@ -8,7 +8,7 @@
 
 #import "LBLaunchImageAdView.h"
 #import "UIImageView+WebCache.h"
-
+#import "SDAutoLayout.h"
 
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
@@ -52,8 +52,7 @@
                                      target:self
                                    selector:@selector(closeAddImgAnimation)
                                    userInfo:nil
-                                    repeats:NO];
-    
+                                    repeats:NO];    
 }
 
 - (void)skipBtnClick{
@@ -178,29 +177,38 @@
     }
 }
 
-
-
+#pragma mark - pod 'SDWebImage','~> 4.0.0' 更新
 -(void)setImgUrl:(NSString *)imgUrl{
     _imgUrl = imgUrl;
-    if (_imgUrl) {
-        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        [manager downloadImageWithURL:[NSURL URLWithString:_imgUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            if (image) {
+//    if (_imgUrl) {
+//        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+//        
+//        [manager downloadImageWithURL:[NSURL URLWithString:_imgUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//            if (image) {
+//                [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
+//            }
+//        }];
+//    }
+    [_aDImgView sd_setImageWithURL:[NSURL URLWithString:_imgUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        if(image){
                 [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
-            }
-        }];
-    }
+        }
+    }];
 }
 
 
-
 - (void)addLBlaunchImageAdView:(AdType)adType{
-    _adTime = 6;
+    #pragma mark - iOS开发 强制竖屏。系统KVO 强制竖屏—>适用于支持各种方向屏幕启动时，竖屏展示广告 by:nixs
+    NSNumber * orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+    
+    //倒计时时间
+    _adTime = 3;
     [[UIApplication sharedApplication].delegate.window makeKeyAndVisible];
     //获取启动图片
     CGSize viewSize = [UIApplication sharedApplication].delegate.window.bounds.size;
-    //横屏请设置成 @"Landscape"
+    //横屏请设置成 @"Landscape"|Portrait
     NSString *viewOrientation = @"Portrait";
     __block NSString *launchImageName = nil;
     NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];

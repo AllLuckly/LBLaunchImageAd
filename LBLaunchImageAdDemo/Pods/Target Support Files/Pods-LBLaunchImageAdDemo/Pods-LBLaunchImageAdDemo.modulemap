@@ -1,0 +1,6 @@
+framework module Pods_LBLaunchImageAdDemo {
+  umbrella header "Pods-LBLaunchImageAdDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

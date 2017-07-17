@@ -1,0 +1,17 @@
+PODS:
+  - SDAutoLayout (2.1.8)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+
+DEPENDENCIES:
+  - SDAutoLayout (~> 2.1.8)
+  - SDWebImage (~> 4.0.0)
+
+SPEC CHECKSUMS:
+  SDAutoLayout: 7bd855a7263efbea3a8495f210ea405d065db6f9
+  SDWebImage: 7195ab1bb59244792a17ae55eac97eb8d185b589
+
+PODFILE CHECKSUM: 3cab9f9eed585928f4102ff5128da5ba556da087
+
+COCOAPODS: 1.2.0
