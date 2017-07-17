@@ -47,34 +47,23 @@
         //自定义跳过按钮
         imgAdView.skipBtn.backgroundColor = [UIColor blackColor];
         //各种点击事件的回调
+        
         imgAdView.clickBlock = ^(clickType type){
             switch (type) {
                 case clickAdType:{
                     NSLog(@"点击广告回调");
                     TestViewController *vc = [[TestViewController alloc]init];
-                    //vc.view.backgroundColor = [UIColor whiteColor];
+                    vc.view.backgroundColor = [UIColor whiteColor];
                     [weakSelf.window.rootViewController presentViewController:vc animated:YES completion:^{
-                        [self.window makeKeyAndVisible];
+                        
                     }];
                 }
                     break;
-                case skipAdType:{
+                case skipAdType:
                     NSLog(@"点击跳过回调");
-                    TestViewController *vc = [[TestViewController alloc]init];
-                    //vc.view.backgroundColor = [UIColor whiteColor];
-                    [weakSelf.window.rootViewController presentViewController:vc animated:YES completion:^{
-                        [self.window makeKeyAndVisible];
-                    }];
-                }
                     break;
-                case overtimeAdType:{
+                case overtimeAdType:
                     NSLog(@"倒计时完成后的回调");
-                    TestViewController *vc = [[TestViewController alloc]init];
-                    //vc.view.backgroundColor = [UIColor whiteColor];
-                    [weakSelf.window.rootViewController presentViewController:vc animated:YES completion:^{
-                        [self.window makeKeyAndVisible];
-                    }];
-                }
                     break;
                 default:
                     break;
@@ -108,6 +97,9 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     return UIInterfaceOrientationMaskAllButUpsideDown;

@@ -18,9 +18,9 @@
     [super viewDidLoad];
     self.navigationItem.title = @"TestVC";
     //https://itunes.apple.com/cn/app/it-blog-for-ios-developers/id1067787090?mt=8
-    //NSURL *url = [NSURL URLWithString:@"https://github.com/AllLuckly/LBLaunchImageAd"];
-    //[[UIApplication sharedApplication] openURL:url];
-    self.view.backgroundColor = [UIColor redColor];
+    NSURL *url = [NSURL URLWithString:@"https://github.com/AllLuckly/LBLaunchImageAd"];
+    [[UIApplication sharedApplication] openURL:url];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 

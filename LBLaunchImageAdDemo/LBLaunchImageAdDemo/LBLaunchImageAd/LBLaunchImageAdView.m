@@ -8,7 +8,7 @@
 
 #import "LBLaunchImageAdView.h"
 #import "UIImageView+WebCache.h"
-#import "SDAutoLayout.h"
+
 
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
@@ -180,19 +180,9 @@
 #pragma mark - pod 'SDWebImage','~> 4.0.0' 更新
 -(void)setImgUrl:(NSString *)imgUrl{
     _imgUrl = imgUrl;
-//    if (_imgUrl) {
-//        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-//        
-//        [manager downloadImageWithURL:[NSURL URLWithString:_imgUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-//        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-//            if (image) {
-//                [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
-//            }
-//        }];
-//    }
     [_aDImgView sd_setImageWithURL:[NSURL URLWithString:_imgUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         if(image){
-                [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
+            [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
         }
     }];
 }
@@ -202,23 +192,10 @@
     #pragma mark - iOS开发 强制竖屏。系统KVO 强制竖屏—>适用于支持各种方向屏幕启动时，竖屏展示广告 by:nixs
     NSNumber * orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
     [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
-    
     //倒计时时间
-    _adTime = 3;
+    _adTime = 6;
     [[UIApplication sharedApplication].delegate.window makeKeyAndVisible];
-    //获取启动图片
-    CGSize viewSize = [UIApplication sharedApplication].delegate.window.bounds.size;
-    //横屏请设置成 @"Landscape"|Portrait
-    NSString *viewOrientation = @"Portrait";
-    __block NSString *launchImageName = nil;
-    NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
-    [imagesDict enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        CGSize imageSize = CGSizeFromString(obj[@"UILaunchImageSize"]);
-        if (CGSizeEqualToSize(imageSize, viewSize) && [viewOrientation isEqualToString:obj[@"UILaunchImageOrientation"]])
-        {
-            launchImageName = obj[@"UILaunchImageName"];
-        }
-    }];
+    NSString *launchImageName = [self getLaunchImage:@"Portrait"];
     UIImage * launchImage = [UIImage imageNamed:launchImageName];
     self.backgroundColor = [UIColor colorWithPatternImage:launchImage];
     self.frame = CGRectMake(0, 0, mainWidth, mainHeight);
@@ -254,5 +231,27 @@
     countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
     [[UIApplication sharedApplication].delegate.window addSubview:self];
 }
+
+/*
+ *viewOrientation 屏幕方向
+ */
+- (NSString *)getLaunchImage:(NSString *)viewOrientation{
+    //获取启动图片
+    CGSize viewSize = [UIApplication sharedApplication].delegate.window.bounds.size;
+    //横屏请设置成 @"Landscape"|Portrait
+//    NSString *viewOrientation = @"Portrait";
+    __block NSString *launchImageName = nil;
+    NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
+    [imagesDict enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGSize imageSize = CGSizeFromString(obj[@"UILaunchImageSize"]);
+        if (CGSizeEqualToSize(imageSize, viewSize) && [viewOrientation isEqualToString:obj[@"UILaunchImageOrientation"]])
+        {
+            launchImageName = obj[@"UILaunchImageName"];
+        }
+    }];
+    return launchImageName;
+}
+
+
 
 @end

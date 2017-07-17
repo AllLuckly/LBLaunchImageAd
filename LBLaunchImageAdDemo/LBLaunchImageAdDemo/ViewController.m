@@ -18,10 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSURL *url = [NSURL URLWithString:@"https://github.com/AllLuckly/LBLaunchImageAd"];
-    //[[UIApplication sharedApplication] openURL:url];
+//    NSURL *url = [NSURL URLWithString:@"https://github.com/AllLuckly/LBLaunchImageAd"];
+//    [[UIApplication sharedApplication] openURL:url];
     self.navigationItem.title = @"VC";
-    self.view.backgroundColor = [UIColor blueColor];
+//    self.view.backgroundColor = [UIColor blueColor];
 }
 
 - (void)didReceiveMemoryWarning {
