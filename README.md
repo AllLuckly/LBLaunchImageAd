@@ -21,11 +21,6 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 然后再`pod search LBLaunchImageAd`
 
 
-![](./QQ20170717-142110-HD.gif)
-![](./166D7B31-0B02-402B-9F38-04C9424648F1.png)
-
----
-
 ## 2017/6/28号更新：
 ### 修复bug，修复cocopods版本不同步等问题
 
