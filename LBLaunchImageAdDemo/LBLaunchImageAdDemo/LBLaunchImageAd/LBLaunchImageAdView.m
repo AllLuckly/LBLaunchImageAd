@@ -8,6 +8,7 @@
 
 #import "LBLaunchImageAdView.h"
 #import "UIImageView+WebCache.h"
+#import "FLAnimatedImageView+WebCache.h"
 
 
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
@@ -93,70 +94,11 @@
     }
 }
 
-#pragma mark - 指定宽度按比例缩放
-- (UIImage *)imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth {
-    UIImage *newImage = nil;
-    CGSize imageSize = sourceImage.size;
-    CGFloat width = imageSize.width;
-    CGFloat height = imageSize.height;
-    CGFloat targetWidth = defineWidth;
-    CGFloat targetHeight = height / (width / targetWidth);
-    CGSize size = CGSizeMake(targetWidth, targetHeight);
-    CGFloat scaleFactor = 0.0;
-    CGFloat scaledWidth = targetWidth;
-    CGFloat scaledHeight = targetHeight;
-    CGPoint thumbnailPoint = CGPointMake(0.0, 0.0);
-    
-    if(CGSizeEqualToSize(imageSize, size) == NO){
-        
-        CGFloat widthFactor = targetWidth / width;
-        CGFloat heightFactor = targetHeight / height;
-        
-        if(widthFactor > heightFactor){
-            scaleFactor = widthFactor;
-        }
-        else{
-            scaleFactor = heightFactor;
-        }
-        scaledWidth = width * scaleFactor;
-        scaledHeight = height * scaleFactor;
-        
-        if(widthFactor > heightFactor){
-            
-            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
-            
-        }else if(widthFactor < heightFactor){
-            
-            thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
-        }
-    }
-    
-    //    UIGraphicsBeginImageContext(size);
-    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-    CGRect thumbnailRect = CGRectZero;
-    thumbnailRect.origin = thumbnailPoint;
-    thumbnailRect.size.width = scaledWidth;
-    thumbnailRect.size.height = scaledHeight;
-    
-    [sourceImage drawInRect:thumbnailRect];
-    
-    newImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    if(newImage == nil){
-        NSLog(@"scale image fail");
-    }
-    
-    UIGraphicsEndImageContext();
-    return newImage;
-}
-
 - (void)setLocalAdImgName:(NSString *)localAdImgName{
     _localAdImgName = localAdImgName;
     if (_localAdImgName.length > 0) {
         if ([_localAdImgName rangeOfString:@".gif"].location  != NSNotFound ) {
             _localAdImgName  = [_localAdImgName stringByReplacingOccurrencesOfString:@".gif" withString:@""];
-            
-            
             NSData *gifData = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:_localAdImgName ofType:@"gif"]];
             UIWebView *webView = [[UIWebView alloc] initWithFrame:self.aDImgView.frame];
             webView.backgroundColor = [UIColor clearColor];
@@ -180,11 +122,7 @@
 #pragma mark - pod 'SDWebImage','~> 4.0.0' 更新
 -(void)setImgUrl:(NSString *)imgUrl{
     _imgUrl = imgUrl;
-    [_aDImgView sd_setImageWithURL:[NSURL URLWithString:_imgUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        if(image){
-            [self.aDImgView setImage:[self imageCompressForWidth:image targetWidth:mainWidth]];
-        }
-    }];
+    [_aDImgView sd_setImageWithURL:[NSURL URLWithString:_imgUrl] placeholderImage:nil];
 }
 
 
@@ -200,9 +138,9 @@
     self.backgroundColor = [UIColor colorWithPatternImage:launchImage];
     self.frame = CGRectMake(0, 0, mainWidth, mainHeight);
     if (adType == FullScreenAdType) {
-        self.aDImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight)];
+        self.aDImgView = [[FLAnimatedImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight)];
     }else{
-        self.aDImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight - mainWidth/3)];
+        self.aDImgView = [[FLAnimatedImageView alloc]initWithFrame:CGRectMake(0, 0, mainWidth, mainHeight - mainWidth/3)];
     }
     self.skipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.skipBtn.frame = CGRectMake(mainWidth - 70, 20, 60, 30);

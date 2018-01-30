@@ -9,6 +9,7 @@ inhibit_all_warnings!
 
 target 'LBLaunchImageAdDemo' do    
     pod 'SDWebImage','~> 4.0.0'
+    pod 'SDWebImage/GIF'
 end
 
 #Xcode里配置：项目名->Target->Build Settings->Enable BitCode中设置为NO就可以了.防打包异常
