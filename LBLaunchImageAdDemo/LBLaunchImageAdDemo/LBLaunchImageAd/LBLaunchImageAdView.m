@@ -10,9 +10,9 @@
 #import "UIImageView+WebCache.h"
 #import "FLAnimatedImageView+WebCache.h"
 
-
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
+#define KIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
 @interface LBLaunchImageAdView()
 {
@@ -144,6 +144,9 @@
     }
     self.skipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.skipBtn.frame = CGRectMake(mainWidth - 70, 20, 60, 30);
+    if (KIsiPhoneX) {
+        self.skipBtn.frame = CGRectMake(mainWidth - 70, 40, 60, 30);
+    }
     self.skipBtn.backgroundColor = [UIColor brownColor];
     self.skipBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.skipBtn addTarget:self action:@selector(skipBtnClick) forControlEvents:UIControlEventTouchUpInside];

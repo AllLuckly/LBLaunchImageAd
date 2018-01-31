@@ -10,7 +10,7 @@
 
 ## 支持pod导入
 
-pod 'LBLaunchImageAd','~> 1.0.3'
+pod 'LBLaunchImageAd','~> 1.0.5'
 
 如果发现`pod search LBLaunchImageAd` 搜索出来的不是最新版本，需要在终端执行cd转换文件路径命令退回到desktop，然后执行`pod setup`命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了;也可以试下如下方法
 
@@ -21,7 +21,7 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 然后再`pod search LBLaunchImageAd`
 
 ## 2018/1/31号更新：
-### 1.0.3修复网络gif图片只展示第一帧的bug
+### 1.0.5修复网络gif图片只展示第一帧的bug,修复iPhone X 点击跳过无效的bug
 
 ## 2017/6/28号更新：
 ### 修复bug，修复cocopods版本不同步等问题
