@@ -13,6 +13,7 @@
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
 #define KIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define IMGURL @"IMGURL"
 
 @interface LBLaunchImageAdView()
 {
@@ -122,7 +123,11 @@
 #pragma mark - pod 'SDWebImage','~> 4.0.0' 更新
 -(void)setImgUrl:(NSString *)imgUrl{
     _imgUrl = imgUrl;
-    [_aDImgView sd_setImageWithURL:[NSURL URLWithString:_imgUrl] placeholderImage:nil];
+    if ([self isImgCache] == nil) {
+        [_aDImgView sd_setImageWithURL:[NSURL URLWithString:_imgUrl] placeholderImage:nil];
+    }
+    NSUserDefaults *userDf = [NSUserDefaults standardUserDefaults];
+    [userDf setObject:_imgUrl forKey:IMGURL];
 }
 
 
@@ -150,7 +155,7 @@
     self.skipBtn.backgroundColor = [UIColor brownColor];
     self.skipBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.skipBtn addTarget:self action:@selector(skipBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.aDImgView addSubview:self.skipBtn];
+    
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.skipBtn.bounds byRoundingCorners:UIRectCornerBottomRight | UIRectCornerTopRight cornerRadii:CGSizeMake(15, 15)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = self.skipBtn.bounds;
@@ -169,6 +174,10 @@
     opacityAnimation.fillMode = kCAFillModeForwards;
     opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [self.aDImgView.layer addAnimation:opacityAnimation forKey:@"animateOpacity"];
+    if ([self isImgCache].length > 0) {
+        [_aDImgView sd_setImageWithURL:[NSURL URLWithString:[self isImgCache]] placeholderImage:nil];
+    }
+    [self addSubview:self.skipBtn];
     countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
     [[UIApplication sharedApplication].delegate.window addSubview:self];
 }
@@ -193,6 +202,14 @@
     return launchImageName;
 }
 
+- (NSString *)isImgCache{
+    NSUserDefaults *userDf = [NSUserDefaults standardUserDefaults];
+    NSString *imgURL = [userDf objectForKey:IMGURL];
+    if (imgURL.length > 0) {
+        return imgURL;
+    }
+    return nil;
+}
 
 
 @end

@@ -10,7 +10,7 @@
 
 ## 支持pod导入
 
-pod 'LBLaunchImageAd','~> 1.0.5'
+pod 'LBLaunchImageAd','~> 1.0.6'
 
 如果发现`pod search LBLaunchImageAd` 搜索出来的不是最新版本，需要在终端执行cd转换文件路径命令退回到desktop，然后执行`pod setup`命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了;也可以试下如下方法
 
@@ -19,6 +19,12 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 ```
 
 然后再`pod search LBLaunchImageAd`
+
+### 本框架将用在[奇灵感](https://itunes.apple.com/us/app/%E5%A5%87%E7%81%B5%E6%84%9F-%E5%88%86%E4%BA%AB%E6%9C%89%E8%B6%A3%E7%9A%84%E5%88%9B%E6%84%8F/id1340775257?l=zh&ls=1&mt=8)上线项目中，到时有兴趣的朋友可以下载看看效果
+
+## 2018/2/02号更新：
+### 1.0.6增加缓存，如果已经加载过启动图片，那么在没有网络的情况下也会加载，更新后台图片时，第一次加载的是原来已有的图片，下一次加载就是最新的图片了
+
 
 ## 2018/1/31号更新：
 ### 1.0.5修复网络gif图片只展示第一帧的bug,修复iPhone X 点击跳过无效的bug
@@ -56,7 +62,10 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 ```
     //举个例子[LBNetWork PostAPI:url Dic:nil Suc:^(NSDictionary *Res)是自己封装的网络请求 
     [NSObject makeLBLaunchImageAdView:^(LBLaunchImageAdView *imgAdView) {
-    
+        //设置广告的类型
+        imgAdView.getLBlaunchImageAdViewType(LogoAdType);
+        //自定义跳过按钮
+        imgAdView.skipBtn.backgroundColor = [UIColor blackColor];
         [LBNetWork PostAPI:url Dic:nil Suc:^(NSDictionary *Res) {
 
             NSArray *arr = Res[@"resultContent"];
@@ -67,12 +76,8 @@ rm ~/Library/Caches/CocoaPods/search_index.json
             //关键地方
             if (imgURL) {
                 __weak typeof(self) weakSelf = self;
-                 //设置广告的类型
-                imgAdView.getLBlaunchImageAdViewType(LogoAdType);
                 //设置网络启动图片URL
                 imgAdView.imgUrl = imgURL;
-                //自定义跳过按钮
-                imgAdView.skipBtn.backgroundColor = [UIColor blackColor];
                 //各种点击事件的回调
                 imgAdView.clickBlock = ^(clickType type){
                     switch (type) {
@@ -98,7 +103,11 @@ rm ~/Library/Caches/CocoaPods/search_index.json
             }
 
     } Fai:^(NSURLSessionDataTask *operation) {
-        
+        //如果有缓存的话，没网延迟加载rootVC，如下
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //伪代码
+            [self.window setRootViewController:self.tabBarController];
+        });
     }];
        
        
