@@ -20,7 +20,7 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 
 然后再`pod search LBLaunchImageAd`
 
-### 本框架将用在[奇灵感](https://itunes.apple.com/us/app/%E5%A5%87%E7%81%B5%E6%84%9F-%E5%88%86%E4%BA%AB%E6%9C%89%E8%B6%A3%E7%9A%84%E5%88%9B%E6%84%8F/id1340775257?l=zh&ls=1&mt=8)上线项目中，到时有兴趣的朋友可以下载看看效果
+### 本框架将用在[奇灵感](https://itunes.apple.com/cn/app/奇灵感-分享有趣的创意/id1340775257?mt=8)上线项目中，到时有兴趣的朋友可以下载看看效果
 
 ## 2018/2/02号更新：
 ### 1.0.6增加缓存，如果已经加载过启动图片，那么在没有网络的情况下也会加载，更新后台图片时，第一次加载的是原来已有的图片，下一次加载就是最新的图片了
