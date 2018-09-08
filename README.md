@@ -10,7 +10,7 @@
 
 ## 支持pod导入
 
-pod 'LBLaunchImageAd','~> 1.0.7'
+pod 'LBLaunchImageAd','~> 1.0.8'
 
 如果发现`pod search LBLaunchImageAd` 搜索出来的不是最新版本，需要在终端执行cd转换文件路径命令退回到desktop，然后执行`pod setup`命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了;也可以试下如下方法
 
@@ -23,7 +23,7 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 ### 本框架将用在[奇灵感](https://itunes.apple.com/cn/app/奇灵感-分享有趣的创意/id1340775257?mt=8)上线项目中，到时有兴趣的朋友可以下载看看效果
 
 ## 2018/9/08号更新：
-### 1.0.7修复一些bug~
+### 1.0.8修复一些bug~
 
 ## 2018/2/02号更新：
 ### 1.0.6增加缓存，如果已经加载过启动图片，那么在没有网络的情况下也会加载，更新后台图片时，第一次加载的是原来已有的图片，下一次加载就是最新的图片了
