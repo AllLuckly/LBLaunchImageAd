@@ -38,6 +38,10 @@ typedef void (^LBClick) (const clickType);
 @property (nonatomic, copy) NSString *localAdImgName;
 ///网络图片URL
 @property (nonatomic, copy) NSString *imgUrl;
+///广告点击URL
+@property (nonatomic, copy) NSString *advertUrl;
+///是否支持点击广告
+@property (nonatomic, assign) BOOL isClickAdView;
 
 @property (nonatomic, copy)LBClick clickBlock;
 

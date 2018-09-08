@@ -14,6 +14,8 @@
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
 #define KIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 #define IMGURL @"IMGURL"
+#define ISCLICKADVIEW @"ISCLICKADVIEW"
+#define ADVERTURL @"ADVERTURL"
 
 @interface LBLaunchImageAdView()
 {
@@ -67,9 +69,7 @@
 {
     [countDownTimer invalidate];
     countDownTimer = nil;
-    self.hidden = YES;
-    self.aDImgView.hidden = YES;
-    [self removeFromSuperview];
+    
     if ([_isClick integerValue] == 1) {
         if (self.clickBlock) {//点击广告
             self.clickBlock(clickAdType); 
@@ -83,6 +83,9 @@
             self.clickBlock(overtimeAdType);
         }
     }
+    self.hidden = YES;
+    self.aDImgView.hidden = YES;
+//    [self removeFromSuperview];
 }
 
 - (void)onTimer {
@@ -120,7 +123,7 @@
     }
 }
 
-#pragma mark - pod 'SDWebImage','~> 4.0.0' 更新
+
 -(void)setImgUrl:(NSString *)imgUrl{
     _imgUrl = imgUrl;
     if ([self isImgCache] == nil) {
@@ -128,6 +131,18 @@
     }
     NSUserDefaults *userDf = [NSUserDefaults standardUserDefaults];
     [userDf setObject:_imgUrl forKey:IMGURL];
+}
+
+- (void)setIsClickAdView:(BOOL)isClickAdView{
+    _isClickAdView = isClickAdView;
+    NSUserDefaults *userDf = [NSUserDefaults standardUserDefaults];
+    [userDf setObject:@(isClickAdView) forKey:ISCLICKADVIEW];
+}
+
+-(void)setAdvertUrl:(NSString *)advertUrl{
+    _advertUrl = advertUrl;
+    NSUserDefaults *userDf = [NSUserDefaults standardUserDefaults];
+    [userDf setObject:advertUrl forKey:ADVERTURL];
 }
 
 
@@ -177,6 +192,10 @@
     if ([self isImgCache].length > 0) {
         [_aDImgView sd_setImageWithURL:[NSURL URLWithString:[self isImgCache]] placeholderImage:nil];
     }
+    _isClickAdView = [self isClickAdViewCache];
+    if ([self isAdvertUrlCache].length > 0) {
+        _advertUrl = [self isAdvertUrlCache];
+    }
     [self addSubview:self.skipBtn];
     countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
     [[UIApplication sharedApplication].delegate.window addSubview:self];
@@ -211,5 +230,19 @@
     return nil;
 }
 
+- (NSString *)isAdvertUrlCache{
+    NSUserDefaults *userDf = [NSUserDefaults standardUserDefaults];
+    NSString *advertUrl = [userDf objectForKey:ADVERTURL];
+    if (advertUrl.length > 0) {
+        return advertUrl;
+    }
+    return nil;
+}
+
+- (BOOL)isClickAdViewCache{
+    NSUserDefaults *userDf = [NSUserDefaults standardUserDefaults];
+    NSNumber *isClick  = [userDf objectForKey:ISCLICKADVIEW];
+    return [isClick boolValue];
+}
 
 @end

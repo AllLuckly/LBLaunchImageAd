@@ -12,7 +12,11 @@
 
 + (void)makeLBLaunchImageAdView:(void(^)(LBLaunchImageAdView *))block{
     
-    LBLaunchImageAdView *imgAdView = [[LBLaunchImageAdView alloc]init];    
+    LBLaunchImageAdView *imgAdView = [[LBLaunchImageAdView alloc]init];
+    imgAdView.clickBlock = ^(const clickType type) {
+        
+    };
+    NSLog(@"-----%@",imgAdView.clickBlock);
     block(imgAdView);
 }
 @end
