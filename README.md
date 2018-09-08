@@ -10,7 +10,7 @@
 
 ## 支持pod导入
 
-pod 'LBLaunchImageAd','~> 1.0.6'
+pod 'LBLaunchImageAd','~> 1.0.7'
 
 如果发现`pod search LBLaunchImageAd` 搜索出来的不是最新版本，需要在终端执行cd转换文件路径命令退回到desktop，然后执行`pod setup`命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了;也可以试下如下方法
 
@@ -21,6 +21,9 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 然后再`pod search LBLaunchImageAd`
 
 ### 本框架将用在[奇灵感](https://itunes.apple.com/cn/app/奇灵感-分享有趣的创意/id1340775257?mt=8)上线项目中，到时有兴趣的朋友可以下载看看效果
+
+## 2018/9/08号更新：
+### 1.0.7修复一些bug~
 
 ## 2018/2/02号更新：
 ### 1.0.6增加缓存，如果已经加载过启动图片，那么在没有网络的情况下也会加载，更新后台图片时，第一次加载的是原来已有的图片，下一次加载就是最新的图片了
@@ -65,50 +68,67 @@ rm ~/Library/Caches/CocoaPods/search_index.json
         //设置广告的类型
         imgAdView.getLBlaunchImageAdViewType(LogoAdType);
         //自定义跳过按钮
-        imgAdView.skipBtn.backgroundColor = [UIColor blackColor];
-        [LBNetWork PostAPI:url Dic:nil Suc:^(NSDictionary *Res) {
-
-            NSArray *arr = Res[@"resultContent"];
-            NSString *imgURL = nil;
-            for (NSDictionary *dic in arr) {
-                imgURL = [NSString stringWithFormat:@"xxxxx%@",dic[@"imgpath"]] ;
-            }
-            //关键地方
-            if (imgURL) {
-                __weak typeof(self) weakSelf = self;
-                //设置网络启动图片URL
-                imgAdView.imgUrl = imgURL;
-                //各种点击事件的回调
-                imgAdView.clickBlock = ^(clickType type){
-                    switch (type) {
-                        case clickAdType:{
-                            NSLog(@"点击广告回调");
-                            TestViewController *vc = [[TestViewController alloc]init];
-                            vc.view.backgroundColor = [UIColor whiteColor];
-                            [weakSelf.window.rootViewController presentViewController:vc animated:YES completion:^{
-
-                            }];
+        imgAdView.skipBtn.backgroundColor = [UIColor lightGrayColor];
+        imgAdView.skipBtn.alpha = 0.5;
+        [imgAdView.skipBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        __block LBLaunchImageAdView *adView = imgAdView;
+        imgAdView.clickBlock = ^(const clickType type) {
+            switch (type) {
+                case clickAdType:{
+                    NSLog(@"点击广告回调");
+                    if (adView.advertUrl.length > 10 && adView.isClickAdView) {
+                        LBAdVC *vc = [[LBAdVC alloc]init];
+                        vc.url = adView.advertUrl;
+                        vc.view.backgroundColor = [UIColor whiteColor];
+                        if (self.tabBarController) {
+                            [self.window setRootViewController:self.tabBarController];
+                        }else{
+                            [self setupViewControllers];
+                            [self.window setRootViewController:self.tabBarController];
                         }
-                            break;
-                        case skipAdType:
-                            NSLog(@"点击跳过回调");
-                            break;
-                        case overtimeAdType:
-                            NSLog(@"倒计时完成后的回调");
-                            break;
-                        default:
-                            break;
+                        CYLTabBarController *tab = (CYLTabBarController *)_window.rootViewController;
+                        UINavigationController *nav = (UINavigationController *)tab.viewControllers[0];
+                        vc.hidesBottomBarWhenPushed = YES;
+                        [nav pushViewController:vc animated:YES];
                     }
-                };
+                
+                }
+                break;
+                case skipAdType:
+                    NSLog(@"点击跳过回调");
+                    if (self.tabBarController) {
+                        [self.window setRootViewController:self.tabBarController];
+                    }else{
+                        [self setupViewControllers];
+                        [self.window setRootViewController:self.tabBarController];
+                    }
+                
+                
+                break;
+                case overtimeAdType:
+                    NSLog(@"倒计时完成后的回调");
+                    [self.window setRootViewController:self.tabBarController];
+                break;
+                default:
+                break;
             }
-
-    } Fai:^(NSURLSessionDataTask *operation) {
-        //如果有缓存的话，没网延迟加载rootVC，如下
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //伪代码
-            [self.window setRootViewController:self.tabBarController];
-        });
-    }];
+        };
+        ///网络请求
+        [req startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        //        NSLog(@"%@",request.responseJSONObject);
+            NSDictionary *dic = request.responseJSONObject;
+            if (dic) {
+                //设置网络启动图片URL
+                imgAdView.imgUrl = dic[@"imgURl"];
+                //点击响应的url
+                imgAdView.advertUrl = dic[@"clickURl"];
+                //是否能点击
+                imgAdView.isClickAdView = [dic[@"isClick"] boolValue];
+            }
+        
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        }];
        
        
   }];
