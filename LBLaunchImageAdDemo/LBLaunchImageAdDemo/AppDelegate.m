@@ -19,18 +19,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    /* 
-     * FullScreenAdType 全屏广告
-     * LogoAdType 带logo的广告类似网易广告，值得注意的是启动图片必须带logo图
-     * imgUrl  图片url
-     */
-    
-   
-//    ///在确认url有值后写，否则会出现突然白一下的情况
-//    adView.imgUrl = @"http://www.uisheji.com/wp-content/uploads/2013/04/19/app-design-uisheji-ui-icon20121_55.jpg";
-    
-    
+
     /* FullScreenAdType 全屏广告
      * LogoAdType 带logo的广告类似网易广告，值得注意的是启动图片必须带logo图
      * localAdImgName  本地图片名字
