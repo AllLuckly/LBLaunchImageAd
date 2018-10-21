@@ -12,7 +12,7 @@
 
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
-#define KIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define KIsiPhoneXs ((int)((mainHeight/mainWidth)*100) == 216)?YES:NO
 #define IMGURL @"IMGURL"
 #define ISCLICKADVIEW @"ISCLICKADVIEW"
 #define ADVERTURL @"ADVERTURL"
@@ -164,18 +164,15 @@
     }
     self.skipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.skipBtn.frame = CGRectMake(mainWidth - 70, 20, 60, 30);
-    if (KIsiPhoneX) {
+    if (KIsiPhoneXs) {
         self.skipBtn.frame = CGRectMake(mainWidth - 70, 40, 60, 30);
     }
     self.skipBtn.backgroundColor = [UIColor brownColor];
     self.skipBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.skipBtn addTarget:self action:@selector(skipBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.skipBtn.bounds byRoundingCorners:UIRectCornerBottomRight | UIRectCornerTopRight cornerRadii:CGSizeMake(15, 15)];
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = self.skipBtn.bounds;
-    maskLayer.path = maskPath.CGPath;
-    self.skipBtn.layer.mask = maskLayer;
+    self.skipBtn.layer.cornerRadius = 3;
+    self.skipBtn.clipsToBounds = YES;
+
     self.aDImgView.tag = 1101;
     [self addSubview:self.aDImgView];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(activiTap:)];
