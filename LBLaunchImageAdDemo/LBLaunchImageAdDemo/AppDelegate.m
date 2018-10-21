@@ -26,7 +26,6 @@
      */
     __weak typeof(self) weakSelf = self;
     [NSObject makeLBLaunchImageAdView:^(LBLaunchImageAdView *imgAdView) {
-        
         //设置广告的类型
         imgAdView.getLBlaunchImageAdViewType(LogoAdType);
         //设置本地启动图片
