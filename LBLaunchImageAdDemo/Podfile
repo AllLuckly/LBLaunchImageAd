@@ -8,7 +8,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'LBLaunchImageAdDemo' do    
-    pod 'SDWebImage','~> 4.0.0'
+    pod 'SDWebImage'
     pod 'SDWebImage/GIF'
 end
 
