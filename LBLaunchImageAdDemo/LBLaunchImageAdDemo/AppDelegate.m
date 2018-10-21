@@ -29,7 +29,6 @@
         
         //设置广告的类型
         imgAdView.getLBlaunchImageAdViewType(LogoAdType);
-        
         //设置本地启动图片
         //imgAdView.localAdImgName = @"qidong.gif";
         imgAdView.imgUrl = @"http://img.zcool.cn/community/01316b5854df84a8012060c8033d89.gif";
