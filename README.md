@@ -1,6 +1,6 @@
 # LBLaunchImageAd
 
-[![Apps Using](https://img.shields.io/badge/Apps%20Using-%3E%205,00-00BFFF.svg?style=plastic)](https://cocoapods.org/pods/LBLaunchImageAd)
+[![Apps Using](https://img.shields.io/badge/Apps%20Using-%3E%20500-00BFFF.svg?style=plastic)](https://cocoapods.org/pods/LBLaunchImageAd)
 [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/lblaunchimagead)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/AllLuckly/LBLaunchImageAd)
 [![Pod Platform](http://img.shields.io/cocoapods/p/LBLaunchImageAd.svg?style=flat)](http://cocoadocs.org/docsets/LBLaunchImageAd/)
