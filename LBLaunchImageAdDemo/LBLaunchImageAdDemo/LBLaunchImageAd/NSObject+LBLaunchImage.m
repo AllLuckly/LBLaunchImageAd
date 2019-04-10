@@ -16,7 +16,6 @@
     imgAdView.clickBlock = ^(const clickType type) {
         
     };
-    NSLog(@"-----%@",imgAdView.clickBlock);
     block(imgAdView);
 }
 @end

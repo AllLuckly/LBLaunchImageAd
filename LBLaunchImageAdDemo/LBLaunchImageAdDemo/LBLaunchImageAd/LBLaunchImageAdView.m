@@ -195,7 +195,9 @@
     }
     [self addSubview:self.skipBtn];
     countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
-    [[UIApplication sharedApplication].delegate.window addSubview:self];
+    UIViewController *vc = [UIViewController new];
+    [vc.view addSubview:self];
+    [UIApplication sharedApplication].delegate.window.rootViewController = vc;
 }
 
 /*
@@ -241,5 +243,7 @@
     NSNumber *isClick  = [userDf objectForKey:ISCLICKADVIEW];
     return [isClick boolValue];
 }
+
+
 
 @end
