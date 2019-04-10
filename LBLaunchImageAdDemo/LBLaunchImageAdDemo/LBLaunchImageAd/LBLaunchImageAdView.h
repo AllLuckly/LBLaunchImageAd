@@ -1,6 +1,6 @@
 //  好用请star：https://github.com/AllLuckly/LBLaunchImageAd
 //  LBLaunchImageAdView.h
-//  LBLaunchImageAd
+//  LBLaunchImageAd         1.1.0
 //  技术交流群：534926022（免费） 511040024(0.8元/人付费)
 //  Created by gold on 16/6/8.
 //  Copyright © 2016年 Bison. All rights reserved.
