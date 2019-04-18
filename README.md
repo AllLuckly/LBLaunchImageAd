@@ -20,7 +20,7 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 
 然后再`pod search LBLaunchImageAd`
 
-### 本框架将用在[奇灵感](https://itunes.apple.com/cn/app/奇灵感-分享有趣的创意/id1340775257?mt=8)上线项目中，到时有兴趣的朋友可以下载看看效果
+### 本框架将用在[涂嗨oh](https://itunes.apple.com/cn/app/id1451568487)上线项目中，到时有兴趣的朋友可以下载看看效果
 
 ## 2018/10/21号更新：
 ### 1.0.9 适配iPhone XS+++
