@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "TestViewController.h"
 #import "NSObject+LBLaunchImage.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -30,11 +31,10 @@
         imgAdView.getLBlaunchImageAdViewType(LogoAdType);
         //设置本地启动图片
         //imgAdView.localAdImgName = @"qidong.gif";
-        imgAdView.imgUrl = @"http://img.zcool.cn/community/01316b5854df84a8012060c8033d89.gif";
+        imgAdView.imgUrl = @"https://hbimg.huabanimg.com/5e7d8c4bdf276d2f96b90f4f6e4f1b0fa681dacc2c584e-OgArEz_fw658";
         //自定义跳过按钮
         imgAdView.skipBtn.backgroundColor = [UIColor blackColor];
         //各种点击事件的回调
-        
         imgAdView.clickBlock = ^(clickType type){
             switch (type) {
                 case clickAdType:{
@@ -46,11 +46,19 @@
                     }];
                 }
                     break;
-                case skipAdType:
+                case skipAdType:{
                     NSLog(@"点击跳过回调");
+                    ViewController *vc = [[ViewController alloc]init];
+                    vc.view.backgroundColor = [UIColor whiteColor];
+                    self.window.rootViewController = vc;
+                }
                     break;
-                case overtimeAdType:
+                case overtimeAdType:{
                     NSLog(@"倒计时完成后的回调");
+                    ViewController *vc = [[ViewController alloc]init];
+                    vc.view.backgroundColor = [UIColor whiteColor];
+                    self.window.rootViewController = vc;
+                }
                     break;
                 default:
                     break;

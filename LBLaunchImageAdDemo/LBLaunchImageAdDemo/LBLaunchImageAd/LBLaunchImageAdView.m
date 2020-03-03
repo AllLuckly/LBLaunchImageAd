@@ -155,6 +155,11 @@
     [[UIApplication sharedApplication].delegate.window makeKeyAndVisible];
     NSString *launchImageName = [self getLaunchImage:@"Portrait"];
     UIImage * launchImage = [UIImage imageNamed:launchImageName];
+    launchImage = nil;
+    if (launchImage == nil) {//没有获取到图片自动获取LaunchScreen.storyboard
+        launchImage = [self imageFromLaunchScreen];
+    }
+    
     self.backgroundColor = [UIColor colorWithPatternImage:launchImage];
     self.frame = CGRectMake(0, 0, mainWidth, mainHeight);
     if (adType == FullScreenAdType) {
@@ -200,6 +205,7 @@
     [UIApplication sharedApplication].delegate.window.rootViewController = vc;
 }
 
+
 /*
  *viewOrientation 屏幕方向
  */
@@ -244,6 +250,44 @@
     return [isClick boolValue];
 }
 
+
+-(UIImage *)imageFromLaunchScreen{
+    NSString *UILaunchStoryboardName = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchStoryboardName"];
+    if(UILaunchStoryboardName == nil){
+        return nil;
+    }
+    UIViewController *LaunchScreenSb = [[UIStoryboard storyboardWithName:UILaunchStoryboardName bundle:nil] instantiateInitialViewController];
+    if(LaunchScreenSb){
+        UIView * view = LaunchScreenSb.view;
+        // 加入到UIWindow后，LaunchScreenSb.view的safeAreaInsets在刘海屏机型才正常。
+        UIWindow *containerWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        view.frame = containerWindow.bounds;
+        [containerWindow addSubview:view];
+        [containerWindow layoutIfNeeded];
+        UIImage *image = [self imageFromView:view];
+        containerWindow = nil;
+        return image;
+    }
+    return nil;
+}
+
+-(UIImage*)imageFromView:(UIView*)view{
+    //fix bug:https://github.com/CoderZhuXH/XHLaunchAd/issues/203
+    if (CGRectIsEmpty(view.frame)) {
+        return nil;
+    }
+    CGSize size = view.bounds.size;
+    //参数1:表示区域大小 参数2:如果需要显示半透明效果,需要传NO,否则传YES 参数3:屏幕密度
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    if ([view respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+        [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
+    }else{
+        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    }
+    UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 
 
 @end

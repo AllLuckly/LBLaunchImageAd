@@ -19,6 +19,7 @@
 		6A614E061D41E58200CAB478 /* LBLaunchImageAdDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614E051D41E58200CAB478 /* LBLaunchImageAdDemoTests.m */; };
 		6A614E111D41E58200CAB478 /* LBLaunchImageAdDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614E101D41E58200CAB478 /* LBLaunchImageAdDemoUITests.m */; };
 		6A614E501D41E85200CAB478 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614E4F1D41E85200CAB478 /* TestViewController.m */; };
+		9FB16FFA240E0B9D00F63001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB16FF9240E0B9D00F63001 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		6A614E4E1D41E85200CAB478 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		6A614E4F1D41E85200CAB478 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		6A637450E60404ACD9AC62A9 /* Pods_LBLaunchImageAdDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBLaunchImageAdDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FB16FF9240E0B9D00F63001 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEA38F40CE48056B6792BA39 /* Pods-LBLaunchImageAdDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBLaunchImageAdDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LBLaunchImageAdDemo/Pods-LBLaunchImageAdDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D3E7FC107D17BE6DB6D29C24 /* Pods-LBLaunchImageAdDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBLaunchImageAdDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LBLaunchImageAdDemo/Pods-LBLaunchImageAdDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +139,7 @@
 				6A614E4E1D41E85200CAB478 /* TestViewController.h */,
 				6A614E4F1D41E85200CAB478 /* TestViewController.m */,
 				6A614DF41D41E58100CAB478 /* Main.storyboard */,
+				9FB16FF9240E0B9D00F63001 /* LaunchScreen.storyboard */,
 				6A614DF71D41E58100CAB478 /* Assets.xcassets */,
 				6A614DFC1D41E58100CAB478 /* Info.plist */,
 				6A614DEB1D41E58100CAB478 /* Supporting Files */,
@@ -273,6 +276,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -294,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A614DF81D41E58100CAB478 /* Assets.xcassets in Resources */,
+				9FB16FFA240E0B9D00F63001 /* LaunchScreen.storyboard in Resources */,
 				6A0C10A11F023E4900628FD8 /* qidong.gif in Resources */,
 				6A614DF61D41E58100CAB478 /* Main.storyboard in Resources */,
 			);
@@ -514,7 +519,7 @@
 				DEVELOPMENT_TEAM = D66L8SMRE3;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LBLaunchImageAdDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.asiainfo.LBLaunchImageAdDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -536,7 +541,7 @@
 				DEVELOPMENT_TEAM = D66L8SMRE3;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LBLaunchImageAdDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.asiainfo.LBLaunchImageAdDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

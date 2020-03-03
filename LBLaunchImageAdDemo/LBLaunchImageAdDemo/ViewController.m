@@ -22,7 +22,7 @@
 //    [[UIApplication sharedApplication] openURL:url];
     self.navigationItem.title = @"VC";
     
-//    self.view.backgroundColor = [UIColor blueColor];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {
