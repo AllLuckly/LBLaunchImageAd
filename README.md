@@ -10,7 +10,7 @@
 
 ## 支持pod导入
 
-pod 'LBLaunchImageAd','~> 1.0.9'
+pod 'LBLaunchImageAd','~> 1.1.1'
 
 如果发现`pod search LBLaunchImageAd` 搜索出来的不是最新版本，需要在终端执行cd转换文件路径命令退回到desktop，然后执行`pod setup`命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了;也可以试下如下方法
 
@@ -20,7 +20,12 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 
 然后再`pod search LBLaunchImageAd`
 
+
+
 ### 本框架将用在[涂嗨oh](https://itunes.apple.com/cn/app/id1451568487)上线项目中，到时有兴趣的朋友可以下载看看效果
+
+## 2020/03/03号更新：
+### 1.1.1 LaunchScreen.storyboard和LaunchImage无痕切换;如果需要把LaunchImage换成LaunchScreen.storyboard只需要删除LaunchImage然后创建LaunchScreen.storyboard然后到项目中的TARGETS --> APP Icons and Launch Images 修改LaunchScreen File 为LaunchScreen即可
 
 ## 2018/10/21号更新：
 ### 1.0.9 适配iPhone XS+++
