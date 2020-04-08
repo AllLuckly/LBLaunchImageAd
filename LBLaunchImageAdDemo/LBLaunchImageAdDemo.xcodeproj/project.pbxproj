@@ -20,6 +20,7 @@
 		6A614E111D41E58200CAB478 /* LBLaunchImageAdDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614E101D41E58200CAB478 /* LBLaunchImageAdDemoUITests.m */; };
 		6A614E501D41E85200CAB478 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A614E4F1D41E85200CAB478 /* TestViewController.m */; };
 		9FB16FFA240E0B9D00F63001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB16FF9240E0B9D00F63001 /* LaunchScreen.storyboard */; };
+		9FD74213243E1DDE0013B73F /* AppStoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FD74212243E1DDE0013B73F /* AppStoreIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		6A614E4F1D41E85200CAB478 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		6A637450E60404ACD9AC62A9 /* Pods_LBLaunchImageAdDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBLaunchImageAdDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB16FF9240E0B9D00F63001 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9FD74212243E1DDE0013B73F /* AppStoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppStoreIcon.png; sourceTree = "<group>"; };
 		AEA38F40CE48056B6792BA39 /* Pods-LBLaunchImageAdDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBLaunchImageAdDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LBLaunchImageAdDemo/Pods-LBLaunchImageAdDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D3E7FC107D17BE6DB6D29C24 /* Pods-LBLaunchImageAdDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBLaunchImageAdDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LBLaunchImageAdDemo/Pods-LBLaunchImageAdDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,7 @@
 				6A614E4F1D41E85200CAB478 /* TestViewController.m */,
 				6A614DF41D41E58100CAB478 /* Main.storyboard */,
 				9FB16FF9240E0B9D00F63001 /* LaunchScreen.storyboard */,
+				9FD74212243E1DDE0013B73F /* AppStoreIcon.png */,
 				6A614DF71D41E58100CAB478 /* Assets.xcassets */,
 				6A614DFC1D41E58100CAB478 /* Info.plist */,
 				6A614DEB1D41E58100CAB478 /* Supporting Files */,
@@ -297,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FD74213243E1DDE0013B73F /* AppStoreIcon.png in Resources */,
 				6A614DF81D41E58100CAB478 /* Assets.xcassets in Resources */,
 				9FB16FFA240E0B9D00F63001 /* LaunchScreen.storyboard in Resources */,
 				6A0C10A11F023E4900628FD8 /* qidong.gif in Resources */,
@@ -345,7 +349,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-LBLaunchImageAdDemo/Pods-LBLaunchImageAdDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-LBLaunchImageAdDemo/Pods-LBLaunchImageAdDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
@@ -356,7 +360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LBLaunchImageAdDemo/Pods-LBLaunchImageAdDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LBLaunchImageAdDemo/Pods-LBLaunchImageAdDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

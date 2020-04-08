@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "FLAnimatedImageView+WebCache.h"
 
+
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
 #define mainWidth       [[UIScreen mainScreen] bounds].size.width
 #define KIsiPhoneXs ((int)((mainHeight/mainWidth)*100) == 216)?YES:NO
@@ -50,7 +51,6 @@
     opacityAnimation.toValue = [NSNumber numberWithFloat:0.3];
     opacityAnimation.removedOnCompletion = NO;
     opacityAnimation.fillMode = kCAFillModeForwards;
-    
     [self.aDImgView.layer addAnimation:opacityAnimation forKey:@"animateOpacity"];
     [NSTimer scheduledTimerWithTimeInterval:opacityAnimation.duration
                                      target:self
@@ -104,18 +104,11 @@
         if ([_localAdImgName rangeOfString:@".gif"].location  != NSNotFound ) {
             _localAdImgName  = [_localAdImgName stringByReplacingOccurrencesOfString:@".gif" withString:@""];
             NSData *gifData = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:_localAdImgName ofType:@"gif"]];
-            UIWebView *webView = [[UIWebView alloc] initWithFrame:self.aDImgView.frame];
-            webView.backgroundColor = [UIColor clearColor];
-            webView.scalesPageToFit = YES;
-            webView.scrollView.scrollEnabled = NO;
-            [webView loadData:gifData MIMEType:@"image/gif" textEncodingName:@"" baseURL:[NSURL URLWithString:@""]];
-            [webView setUserInteractionEnabled:NO];
-            UIButton *clearBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            clearBtn.frame = webView.frame;
-            clearBtn.backgroundColor = [UIColor clearColor];
-            [clearBtn addTarget:self action:@selector(activiTap:) forControlEvents:UIControlEventTouchUpInside];
-            [webView addSubview:clearBtn];
-            [self.aDImgView addSubview:webView];
+            FLAnimatedImage *image = [[FLAnimatedImage alloc]initWithAnimatedGIFData:gifData];
+            FLAnimatedImageView *adImageView = (FLAnimatedImageView *)self.aDImgView;
+            adImageView.contentMode = UIViewContentModeScaleAspectFill;
+            adImageView.clipsToBounds = YES;
+            adImageView.animatedImage = image;
             [self.aDImgView bringSubviewToFront:_skipBtn];
         }else{
             self.aDImgView.image = [UIImage imageNamed:_localAdImgName];
@@ -159,7 +152,6 @@
     if (launchImage == nil) {//没有获取到图片自动获取LaunchScreen.storyboard
         launchImage = [self imageFromLaunchScreen];
     }
-    
     self.backgroundColor = [UIColor colorWithPatternImage:launchImage];
     self.frame = CGRectMake(0, 0, mainWidth, mainHeight);
     if (adType == FullScreenAdType) {
@@ -184,13 +176,17 @@
     // 允许用户交互
     self.aDImgView.userInteractionEnabled = YES;
     [self.aDImgView addGestureRecognizer:tap];
-    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    opacityAnimation.duration = 0.8;
-    opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
-    opacityAnimation.toValue = [NSNumber numberWithFloat:0.8];
-    opacityAnimation.fillMode = kCAFillModeForwards;
-    opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    [self.aDImgView.layer addAnimation:opacityAnimation forKey:@"animateOpacity"];
+//    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+//    opacityAnimation.duration = 0.8;
+//    opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+//    opacityAnimation.toValue = [NSNumber numberWithFloat:0.8];
+//    opacityAnimation.fillMode = kCAFillModeForwards;
+//    opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+//    [self.aDImgView.layer addAnimation:opacityAnimation forKey:@"animateOpacity"];
+    [UIView animateWithDuration:0.15 animations:^{
+        
+    }];
+    
     if ([self isImgCache].length > 0) {
         [_aDImgView sd_setImageWithURL:[NSURL URLWithString:[self isImgCache]] placeholderImage:nil];
     }
@@ -206,14 +202,10 @@
 }
 
 
-/*
- *viewOrientation 屏幕方向
- */
+
 - (NSString *)getLaunchImage:(NSString *)viewOrientation{
     //获取启动图片
     CGSize viewSize = [UIApplication sharedApplication].delegate.window.bounds.size;
-    //横屏请设置成 @"Landscape"|Portrait
-//    NSString *viewOrientation = @"Portrait";
     __block NSString *launchImageName = nil;
     NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
     [imagesDict enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -261,6 +253,7 @@
         UIView * view = LaunchScreenSb.view;
         // 加入到UIWindow后，LaunchScreenSb.view的safeAreaInsets在刘海屏机型才正常。
         UIWindow *containerWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        containerWindow.backgroundColor = UIColor.whiteColor;
         view.frame = containerWindow.bounds;
         [containerWindow addSubview:view];
         [containerWindow layoutIfNeeded];

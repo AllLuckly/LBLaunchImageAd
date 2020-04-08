@@ -30,8 +30,8 @@
         //设置广告的类型
         imgAdView.getLBlaunchImageAdViewType(LogoAdType);
         //设置本地启动图片
-        //imgAdView.localAdImgName = @"qidong.gif";
-        imgAdView.imgUrl = @"https://hbimg.huabanimg.com/5e7d8c4bdf276d2f96b90f4f6e4f1b0fa681dacc2c584e-OgArEz_fw658";
+        imgAdView.localAdImgName = @"qidong.gif";
+//        imgAdView.imgUrl = @"https://hbimg.huabanimg.com/5e7d8c4bdf276d2f96b90f4f6e4f1b0fa681dacc2c584e-OgArEz_fw658";
         //自定义跳过按钮
         imgAdView.skipBtn.backgroundColor = [UIColor blackColor];
         //各种点击事件的回调
