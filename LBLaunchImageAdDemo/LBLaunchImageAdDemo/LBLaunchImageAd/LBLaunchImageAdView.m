@@ -8,7 +8,8 @@
 
 #import "LBLaunchImageAdView.h"
 #import "UIImageView+WebCache.h"
-#import "FLAnimatedImageView+WebCache.h"
+#import "FLAnimatedImageView.h"
+#import "FLAnimatedImage.h"
 
 
 #define mainHeight      [[UIScreen mainScreen] bounds].size.height
@@ -45,6 +46,7 @@
 
 #pragma mark - 开启关闭动画
 - (void)startcloseAnimation{
+    self.backgroundColor = UIColor.whiteColor;
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.duration = 0.5;
     opacityAnimation.fromValue = [NSNumber numberWithFloat:1.0];
@@ -104,7 +106,7 @@
         if ([_localAdImgName rangeOfString:@".gif"].location  != NSNotFound ) {
             _localAdImgName  = [_localAdImgName stringByReplacingOccurrencesOfString:@".gif" withString:@""];
             NSData *gifData = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:_localAdImgName ofType:@"gif"]];
-            FLAnimatedImage *image = [[FLAnimatedImage alloc]initWithAnimatedGIFData:gifData];
+            FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
             FLAnimatedImageView *adImageView = (FLAnimatedImageView *)self.aDImgView;
             adImageView.contentMode = UIViewContentModeScaleAspectFill;
             adImageView.clipsToBounds = YES;

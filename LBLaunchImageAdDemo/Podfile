@@ -6,6 +6,6 @@ inhibit_all_warnings!
 
 target 'LBLaunchImageAdDemo' do    
     pod 'SDWebImage'
-    pod 'SDWebImage/GIF'
+    pod 'FLAnimatedImage'
 end
 
