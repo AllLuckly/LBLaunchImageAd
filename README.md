@@ -24,7 +24,7 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 
 ### 本框架将用在[涂嗨oh](https://itunes.apple.com/cn/app/id1451568487)上线项目中，到时有兴趣的朋友可以下载看看效果
 
-## 2020/04/10号更新：
+## 2021/02/2号更新：
 ### 1.1.3 
 #### SDWebImage/Core (5.9.5)
 #### SceneDelegate 无法找到 keyWindow 的 bug
