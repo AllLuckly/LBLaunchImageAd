@@ -25,7 +25,13 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 ### 本框架将用在[涂嗨oh](https://itunes.apple.com/cn/app/id1451568487)上线项目中，到时有兴趣的朋友可以下载看看效果
 
 ## 2020/04/10号更新：
-### 1.1.1 删除UIWebView,升级SDWebImage为5.7.1版本
+### 1.1.3 
+#### SDWebImage/Core (5.9.5)
+#### SceneDelegate 无法找到 keyWindow 的 bug
+
+
+## 2020/04/10号更新：
+### 1.1.2 删除UIWebView,升级SDWebImage为5.7.1版本
 
 ## 2020/03/03号更新：
 ### 1.1.1 LaunchScreen.storyboard和LaunchImage无痕切换;如果需要把LaunchImage换成LaunchScreen.storyboard只需要删除LaunchImage然后创建LaunchScreen.storyboard然后到项目中的TARGETS --> APP Icons and Launch Images 修改LaunchScreen File 为LaunchScreen即可
