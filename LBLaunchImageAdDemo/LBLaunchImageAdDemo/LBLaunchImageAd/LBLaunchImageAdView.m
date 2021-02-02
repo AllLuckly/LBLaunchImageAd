@@ -87,7 +87,6 @@
     }
     self.hidden = YES;
     self.aDImgView.hidden = YES;
-//    [self removeFromSuperview];
 }
 
 - (void)onTimer {
@@ -147,10 +146,9 @@
     [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
     //倒计时时间
     _adTime = 6;
-    [[UIApplication sharedApplication].delegate.window makeKeyAndVisible];
+    [[self keyWindow] makeKeyAndVisible];
     NSString *launchImageName = [self getLaunchImage:@"Portrait"];
     UIImage * launchImage = [UIImage imageNamed:launchImageName];
-    launchImage = nil;
     if (launchImage == nil) {//没有获取到图片自动获取LaunchScreen.storyboard
         launchImage = [self imageFromLaunchScreen];
     }
@@ -178,17 +176,7 @@
     // 允许用户交互
     self.aDImgView.userInteractionEnabled = YES;
     [self.aDImgView addGestureRecognizer:tap];
-//    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-//    opacityAnimation.duration = 0.8;
-//    opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
-//    opacityAnimation.toValue = [NSNumber numberWithFloat:0.8];
-//    opacityAnimation.fillMode = kCAFillModeForwards;
-//    opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-//    [self.aDImgView.layer addAnimation:opacityAnimation forKey:@"animateOpacity"];
-    [UIView animateWithDuration:0.15 animations:^{
-        
-    }];
-    
+
     if ([self isImgCache].length > 0) {
         [_aDImgView sd_setImageWithURL:[NSURL URLWithString:[self isImgCache]] placeholderImage:nil];
     }
@@ -200,14 +188,14 @@
     countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
     UIViewController *vc = [UIViewController new];
     [vc.view addSubview:self];
-    [UIApplication sharedApplication].delegate.window.rootViewController = vc;
+    [self keyWindow].rootViewController = vc;
 }
 
 
 
 - (NSString *)getLaunchImage:(NSString *)viewOrientation{
     //获取启动图片
-    CGSize viewSize = [UIApplication sharedApplication].delegate.window.bounds.size;
+    CGSize viewSize = [self keyWindow].bounds.size;
     __block NSString *launchImageName = nil;
     NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
     [imagesDict enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -282,6 +270,19 @@
     UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+}
+
+-(UIWindow*)keyWindow
+{
+    UIWindow *foundWindow = nil;
+    NSArray *windows = [[UIApplication sharedApplication]windows];
+    for (UIWindow *window in windows) {
+        if (window.isKeyWindow) {
+            foundWindow = window;
+            break;
+        }
+    }
+    return foundWindow;
 }
 
 
