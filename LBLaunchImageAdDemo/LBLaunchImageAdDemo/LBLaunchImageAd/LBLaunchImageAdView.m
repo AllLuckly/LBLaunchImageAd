@@ -275,12 +275,15 @@
 -(UIWindow*)keyWindow
 {
     UIWindow *foundWindow = nil;
-    NSArray *windows = [[UIApplication sharedApplication]windows];
+    NSArray *windows = [[UIApplication sharedApplication] windows];
     for (UIWindow *window in windows) {
         if (window.isKeyWindow) {
             foundWindow = window;
             break;
         }
+    }
+    if (foundWindow == nil) {
+        foundWindow = [UIApplication sharedApplication].delegate.window;
     }
     return foundWindow;
 }

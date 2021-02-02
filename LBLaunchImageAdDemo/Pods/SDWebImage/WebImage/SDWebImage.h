@@ -15,7 +15,7 @@ FOUNDATION_EXPORT double SDWebImageVersionNumber;
 //! Project version string for SDWebImage.
 FOUNDATION_EXPORT const unsigned char SDWebImageVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <WebImage/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <SDWebImage/PublicHeader.h>
 
 #import <SDWebImage/SDWebImageManager.h>
 #import <SDWebImage/SDWebImageCacheKeyFilter.h>
@@ -70,6 +70,7 @@ FOUNDATION_EXPORT const unsigned char SDWebImageVersionString[];
 #import <SDWebImage/SDWebImageOptionsProcessor.h>
 #import <SDWebImage/SDImageIOAnimatedCoder.h>
 #import <SDWebImage/SDImageHEICCoder.h>
+#import <SDWebImage/SDImageAWebPCoder.h>
 
 // Mac
 #if __has_include(<SDWebImage/NSImage+Compatibility.h>)

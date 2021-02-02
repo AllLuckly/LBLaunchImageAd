@@ -1,8 +1,8 @@
 PODS:
   - FLAnimatedImage (1.0.12)
-  - SDWebImage (5.7.1):
-    - SDWebImage/Core (= 5.7.1)
-  - SDWebImage/Core (5.7.1)
+  - SDWebImage (5.9.5):
+    - SDWebImage/Core (= 5.9.5)
+  - SDWebImage/Core (5.9.5)
 
 DEPENDENCIES:
   - FLAnimatedImage
@@ -15,8 +15,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  SDWebImage: 5d4cf6afccd9ac1d2ee701ed0c4917cbb1b80536
+  SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
 
-PODFILE CHECKSUM: 8660b54ea97bc7f11a4284c90bff5e1771f758e1
+PODFILE CHECKSUM: 66a5653ef2984682c464715ce4b51ab88bfa8317
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0

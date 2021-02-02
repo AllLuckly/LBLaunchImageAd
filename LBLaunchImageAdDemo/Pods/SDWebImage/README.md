@@ -38,7 +38,7 @@ This library provides an async image downloader with cache support. For convenie
 ## Supported Image Formats
 
 - Image formats supported by Apple system (JPEG, PNG, TIFF, HEIC, ...), including GIF/APNG/HEIC animation
-- WebP format, including animated WebP (use the [SDWebImageWebPCoder](https://github.com/SDWebImage/SDWebImageWebPCoder) project)
+- WebP format, including animated WebP (use the [SDWebImageWebPCoder](https://github.com/SDWebImage/SDWebImageWebPCoder) project). Note iOS 14/macOS 11.0 supports built-in WebP decoding (no encoding).
 - Support extendable coder plugins for new image formats like BPG, AVIF. And vector format like PDF, SVG. See all the list in [Image coder plugin List](https://github.com/SDWebImage/SDWebImage/wiki/Coder-Plugin-List)
 
 ## Additional modules and Ecosystem
@@ -54,7 +54,7 @@ We support SwiftUI by building a brand new framework called [SDWebImageSwiftUI](
 The new framework introduce two View structs `WebImage` and `AnimatedImage` for SwiftUI world, `ImageIndicator` modifier for any View, `ImageManager` observable object for data source. Supports iOS 13+/macOS 10.15+/tvOS 13+/watchOS 6+ and Swift 5.1. Have a nice try and provide feedback!
 
 #### Coders for additional image formats
-- [SDWebImageWebPCoder](https://github.com/SDWebImage/SDWebImageWebPCoder) - coder for WebP format. Based on [libwebp](https://chromium.googlesource.com/webm/libwebp)
+- [SDWebImageWebPCoder](https://github.com/SDWebImage/SDWebImageWebPCoder) - coder for WebP format. iOS 8+/macOS 10.10+. Based on [libwebp](https://chromium.googlesource.com/webm/libwebp)
 - [SDWebImageHEIFCoder](https://github.com/SDWebImage/SDWebImageHEIFCoder) - coder for HEIF format, iOS 8+/macOS 10.10+ support. Based on [libheif](https://github.com/strukturag/libheif)
 - [SDWebImageBPGCoder](https://github.com/SDWebImage/SDWebImageBPGCoder) - coder for BPG format. Based on [libbpg](https://github.com/mirrorer/libbpg)
 - [SDWebImageFLIFCoder](https://github.com/SDWebImage/SDWebImageFLIFCoder) - coder for FLIF format. Based on [libflif](https://github.com/FLIF-hub/FLIF)
@@ -64,7 +64,11 @@ The new framework introduce two View structs `WebImage` and `AnimatedImage` for 
 - [SDWebImageLottieCoder](https://github.com/SDWebImage/SDWebImageLottieCoder) - coder for Lottie animation format. Based on [rlottie](https://github.com/Samsung/rlottie)
 - and more from community!
 
-#### Loaders
+#### Custom Caches
+- [SDWebImageYYPlugin](https://github.com/SDWebImage/SDWebImageYYPlugin) - plugin to support caching images with [YYCache](https://github.com/ibireme/YYCache)
+- [SDWebImagePINPlugin](https://github.com/SDWebImage/SDWebImagePINPlugin) - plugin to support caching images with [PINCache](https://github.com/pinterest/PINCache)
+
+#### Custom Loaders
 - [SDWebImagePhotosPlugin](https://github.com/SDWebImage/SDWebImagePhotosPlugin) - plugin to support loading images from Photos (using `Photos.framework`) 
 - [SDWebImageLinkPlugin](https://github.com/SDWebImage/SDWebImageLinkPlugin) - plugin to support loading images from rich link url, as well as `LPLinkView` (using `LinkPresentation.framework`) 
 
@@ -77,7 +81,7 @@ The new framework introduce two View structs `WebImage` and `AnimatedImage` for 
 #### Community driven popular libraries
 - [FirebaseUI](https://github.com/firebase/FirebaseUI-iOS) - Firebase Storage binding for query images, based on SDWebImage loader system
 - [react-native-fast-image](https://github.com/DylanVann/react-native-fast-image) - React Native fast image component, based on SDWebImage Animated Image solution
-- [flutter_image_compress](https://github.com/OpenFlutter/flutter_image_compress) - Flutter compresses image plugin, based on SDWebImageWebPCoder coder plugin
+- [flutter_image_compress](https://github.com/OpenFlutter/flutter_image_compress) - Flutter compresses image plugin, based on SDWebImage WebP coder plugin
 
 #### Make our lives easier
 - [libwebp-Xcode](https://github.com/SDWebImage/libwebp-Xcode) - A wrapper for [libwebp](https://chromium.googlesource.com/webm/libwebp) + an Xcode project.
@@ -129,6 +133,7 @@ You can use those directly, or create similar components of your own, by using t
 
 - If you **want to contribute**, read the [Contributing Guide](https://github.com/SDWebImage/SDWebImage/blob/master/.github/CONTRIBUTING.md)
 - For **development contribution guide**, read the [How-To-Contribute](https://github.com/SDWebImage/SDWebImage/wiki/How-to-Contribute)
+- For **understanding code architecture**, read the [Code Architecture Analysis](https://github.com/SDWebImage/SDWebImage/wiki/5.6-Code-Architecture-Analysis)
 
 ## How To Use
 
@@ -279,6 +284,12 @@ In the source files where you need to use the library, import the umbrella heade
 #import <SDWebImage/SDWebImage.h>
 ```
 
+It's also recommend to use the module import syntax, available for CocoaPods(enable `modular_headers`)/Carthage/SwiftPM.
+
+```objecitivec
+@import SDWebImage;
+```
+
 ### Build Project
 
 At this point your workspace should build without error. If you are having problem, post to the Issue and the
@@ -305,6 +316,8 @@ Thank you to all the people who have already contributed to SDWebImage.
 All source code is licensed under the [MIT License](https://github.com/SDWebImage/SDWebImage/blob/master/LICENSE).
 
 ## Architecture
+
+To learn about SDWebImage's architecture design for contribution, read [The Core of SDWebImage v5.6 Architecture](https://github.com/SDWebImage/SDWebImage/wiki/5.6-Code-Architecture-Analysis). Thanks @looseyi for the post and translation.
 
 #### High Level Diagram
 <p align="center" >
